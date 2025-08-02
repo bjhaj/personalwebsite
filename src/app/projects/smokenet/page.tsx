@@ -107,7 +107,7 @@ export default function SmokeNet() {
           </h1>
           <div className={`transition-opacity duration-2000 ${showSubheading ? 'opacity-100' : 'opacity-0'}`}>
             <p className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-300 tracking-wide">
-              We built a system that watches the horizon.
+              A system that watches the horizon.
             </p>
           </div>
         </div>
