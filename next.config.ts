@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // Remove output: 'export' for Vercel deployment
+  // output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true
