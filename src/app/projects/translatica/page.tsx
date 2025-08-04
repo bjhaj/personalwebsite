@@ -8,6 +8,11 @@ export default function Translatica() {
   const [visibleElements, setVisibleElements] = useState(new Set())
 
   useEffect(() => {
+    // Immediately trigger hero animation on page load
+    const timer = setTimeout(() => {
+      setVisibleElements(prev => new Set([...prev, 'hero-title']))
+    }, 50)
+
     // Set up Intersection Observer for scroll-triggered animations
     const observer = new IntersectionObserver(
       (entries) => {
@@ -61,8 +66,8 @@ export default function Translatica() {
         })
       },
       { 
-        threshold: 0.2,
-        rootMargin: '0px 0px -10% 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px 0px 0px'
       }
     )
 
@@ -70,7 +75,10 @@ export default function Translatica() {
     const animatedElements = document.querySelectorAll('[data-animate]')
     animatedElements.forEach(el => observer.observe(el))
 
-    return () => observer.disconnect()
+    return () => {
+      clearTimeout(timer)
+      observer.disconnect()
+    }
   }, [])
 
   const isVisible = (id: string) => visibleElements.has(id)
@@ -88,6 +96,8 @@ export default function Translatica() {
             fill
             className="object-cover object-center"
             priority
+            sizes="100vw"
+            quality={85}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
         </div>
@@ -97,10 +107,10 @@ export default function Translatica() {
           <div 
             id="hero-title"
             data-animate
-            className={`transition-all duration-700 ease-out ${
+            className={`transition-all duration-300 ease-out ${
               isVisible('hero-title') 
                 ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[40px] scale-95 blur-sm'
+                : 'opacity-0 translate-y-[20px] scale-98 blur-sm'
             }`}
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-white mb-6 tracking-wide leading-tight">

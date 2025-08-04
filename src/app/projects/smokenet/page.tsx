@@ -12,7 +12,7 @@ export default function SmokeNet() {
 
   useEffect(() => {
     // Trigger subheading fade-in after component mounts
-    const timer = setTimeout(() => setShowSubheading(true), 1400)
+    const timer = setTimeout(() => setShowSubheading(true), 800)
 
     // Track scroll progress for additional triggering
     const handleScroll = () => {
@@ -32,28 +32,26 @@ export default function SmokeNet() {
             // Add element to visible set when it enters viewport
             setVisibleElements(prev => new Set([...prev, entry.target.id]))
             
-            // For damage section, trigger sequential animations
+            // For Why SmokeNet section, trigger sequential animations
             const id = entry.target.id
-            if (id === 'damage-1') {
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'damage-2'])), 700)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'damage-3'])), 1400)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'damage-4'])), 2100)
+            if (id === 'why-smokenet-title') {
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'why-smokenet-content'])), 300)
             }
             
             // For intro concepts, trigger sequential animations
             if (id === 'intro-title') {
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'flow-line'])), 350)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-1'])), 600)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-1-text'])), 2400)
-              setTimeout(() => setBrainAnimationComplete(true), 3100)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'transform-1'])), 2800)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-2'])), 4400)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-2-text'])), 4900)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'transform-2'])), 5400)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-3'])), 5900)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-3-text'])), 6400)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'mobile-flow-1'])), 1400)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'mobile-flow-2'])), 2100)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'flow-line'])), 200)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-1'])), 400)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-1-text'])), 900)
+              setTimeout(() => setBrainAnimationComplete(true), 1100)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'transform-1'])), 1000)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-2'])), 2000)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-2-text'])), 2500)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'transform-2'])), 2600)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-3'])), 3200)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-3-text'])), 3700)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'mobile-flow-1'])), 1200)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'mobile-flow-2'])), 1800)
             }
             
             // For stats, trigger sequential animations
@@ -103,9 +101,9 @@ export default function SmokeNet() {
         
         <div className="relative z-10 text-center px-6 max-w-4xl">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-wide mb-8 animate-fade-in">
-            The season starts earlier now.
+            SmokeNet
           </h1>
-          <div className={`transition-opacity duration-2000 ${showSubheading ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`transition-opacity duration-1000 ${showSubheading ? 'opacity-100' : 'opacity-0'}`}>
             <p className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-300 tracking-wide">
               A system that watches the horizon.
             </p>
@@ -120,91 +118,80 @@ export default function SmokeNet() {
         </div>
       </section>
 
-      {/* The Damage */}
-      <section className="min-h-screen bg-black flex flex-col justify-center items-center px-6">
-        <div className="max-w-4xl text-center space-y-20">
-          <div 
-            id="damage-1"
-            data-animate
-            className={`transition-all duration-1000 ease-out ${
-              isVisible('damage-1') 
-                ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
-            }`}
-          >
-            <p className="text-4xl md:text-6xl lg:text-7xl font-light text-white">
-              12.7 million acres burned last year
-            </p>
-          </div>
-          
-          <div 
-            id="damage-2"
-            className={`transition-all duration-1000 ease-out ${
-              isVisible('damage-2') 
-                ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
-            }`}
-          >
-            <p className="text-4xl md:text-6xl lg:text-7xl font-light text-white">
-              $180B in damages
-            </p>
-          </div>
-          
-          <div 
-            id="damage-3"
-            className={`transition-all duration-1000 ease-out ${
-              isVisible('damage-3') 
-                ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
-            }`}
-          >
-            <p className="text-4xl md:text-6xl lg:text-7xl font-light text-white">
-              Entire towns gone
-            </p>
-          </div>
-          
-          <div 
-            id="damage-4"
-            className={`transition-all duration-1000 ease-out ${
-              isVisible('damage-4') 
-                ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
-            }`}
-          >
-            <p className="text-4xl md:text-6xl lg:text-7xl font-light text-orange-400">
-              Detection still comes too late
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Why SmokeNet? */}
+      <section className="py-12 bg-black">
+        <div className="max-w-8xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left Column - Title */}
+            <div 
+              id="why-smokenet-title"
+              data-animate
+              className={`transition-all duration-1000 ease-out ${
+                isVisible('why-smokenet-title') 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-10'
+              }`}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
+                Why SmokeNet?
+              </h2>
+            </div>
 
-      {/* The Problem */}
-      <section className="min-h-screen bg-gray-950 flex items-center justify-center px-6">
-        <div className="max-w-4xl text-center">
-          <div 
-            id="problem-1"
-            data-animate
-            className={`transition-all duration-1000 ease-out ${
-              isVisible('problem-1') 
-                ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
-            }`}
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-12 text-gray-300">
-              Current detection relies on satellites
-            </h2>
-            <p className="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed text-gray-400">
-              By the time smoke is visible from space, precious hours have already passed. 
-              Ground crews scramble to respond. Sometimes it's already too late.
-            </p>
+            {/* Right Column - Content */}
+            <div 
+              id="why-smokenet-content"
+              data-animate
+              className={`transition-all duration-1000 ease-out delay-300 ${
+                isVisible('why-smokenet-content') 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-10'
+              }`}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-5">
+                  <div>
+                    <h3 className="text-lg font-medium text-orange-400 mb-3">The Problem is Growing</h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      Wildfires are becoming more frequent, intense, and destructive. In 2023 alone, over 2.6 million acres burned in the U.S., causing billions in damages and displacing thousands. Globally, wildfires release more carbon dioxide than all annual traffic emissions combined—fueling climate change and creating a dangerous feedback loop. Yet traditional detection methods, like satellites, often spot fires hours after ignition, when it's already too late.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-orange-400 mb-3">Real-Time Early Detection</h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      Every minute matters. The sooner a fire is detected, the more likely it can be contained. SmokeNet detects smoke in its earliest visible stages—often before satellites register thermal signatures—giving responders a critical head start.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-orange-400 mb-3">Built for Real-World Deployment</h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      Built for real-world deployment, SmokeNet runs without internet, without grid power, and without ideal conditions. Its lightweight, distilled machine learning model operates directly on-device, making fast and reliable decisions in remote, high-risk environments where surveillance is otherwise impossible.
+                    </p>
+                  </div>
+                </div>
+                <div className="space-y-5">
+                  <div>
+                    <h3 className="text-lg font-medium text-orange-400 mb-3">Smart Enough to Know the Difference</h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      Trained on real-world wildfire data, SmokeNet can distinguish true smoke from visual lookalikes like fog, dust, clouds, and lens flare, minimizing false positives and unnecessary dispatches.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-orange-400 mb-3">Immediate, Intelligent Alerts</h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      Once smoke is detected, SmokeNet sends an alert within seconds, using low-power, long-range LoRa radios to relay messages across disconnected terrain—reaching emergency responders without needing cellular or satellite connectivity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Introducing SmokeNet */}
-      <section className="min-h-screen bg-black flex items-center justify-center px-6 py-20">
-        <div className="max-w-7xl w-full">
-          <div className="text-center mb-20">
+      <section className="min-h-screen bg-black flex items-center justify-center px-6 pt-2 pb-10">
+        <div className="max-w-8xl mx-auto px-4 w-full">
+          <div className="mb-20">
             <h2 
               id="intro-title"
               data-animate
@@ -226,62 +213,29 @@ export default function SmokeNet() {
               {/* Stage 1: Heavyweight Learner */}
               <div 
                 id="stage-1"
-                className={`flex-1 text-center relative transition-all duration-1000 ease-out ${
+                className={`flex-1 text-center relative transition-all duration-600 ease-out delay-600 ${
                   isVisible('stage-1') 
                     ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                     : 'opacity-0 translate-y-[40px] scale-110 blur-sm'
                 }`}
               >
-                {/* Morphing container */}
                 <div className="relative mb-6">
-                  {/* Large brain that shrinks over time with enhanced hover effects */}
+                  {/* Brain with simple hover effects - matches Knowledge Distilled style */}
                   <div 
-                    className={`w-40 h-40 mx-auto bg-gradient-to-br from-red-500 to-orange-600 rounded-full flex items-center justify-center shadow-2xl ${
-                      brainAnimationComplete ? 'hover:scale-125 hover:shadow-orange-500/70 hover:shadow-2xl cursor-pointer group' : ''
-                    } relative ${
+                    className={`w-32 h-32 mx-auto bg-gradient-to-br from-red-500 to-orange-600 rounded-full flex items-center justify-center shadow-2xl transition-all duration-800 ease-out delay-300 cursor-pointer group relative ${
                       isVisible('stage-1') 
                         ? 'scale-100 opacity-100' 
-                        : 'scale-[3] opacity-80'
-                    }`}
-                    style={{
-                      transition: isVisible('stage-1') 
-                        ? 'transform 4000ms ease-out 1000ms, opacity 4000ms ease-out 1000ms, box-shadow 300ms ease-out' 
-                        : 'transform 4000ms ease-out 1000ms, opacity 4000ms ease-out 1000ms'
-                    }}
-                  >
-                    <span className={`text-7xl animate-pulse ${brainAnimationComplete ? 'group-hover:animate-bounce group-hover:scale-110' : ''} transition-transform duration-300 relative z-10`} role="img" aria-label="Massive neural network">🧠</span>
-                    
-                    {/* Enhanced hover glow effect */}
-                    {brainAnimationComplete && (
-                      <div className="absolute inset-0 bg-orange-400/30 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse group-hover:scale-110"></div>
-                    )}
-                    
-                    {/* Pulsing ring effect on hover */}
-                    {brainAnimationComplete && (
-                      <div className="absolute inset-0 border-4 border-orange-400/50 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700"></div>
-                    )}
-                  </div>
-                  
-                  {/* Complexity indicators inside the brain circle */}
-                  <div 
-                    className={`absolute inset-0 flex items-center justify-center transition-all duration-[1400ms] ease-out delay-[2100ms] ${
-                      isVisible('stage-1') 
-                        ? 'opacity-100 scale-100' 
-                        : 'opacity-0 scale-0'
+                        : 'scale-[1.3] opacity-60'
                     }`}
                   >
-                    <div className="flex space-x-1 absolute top-3 left-1/2 transform -translate-x-1/2">
-                      <div className="w-2 h-2 bg-red-400 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                      <div className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
-                    </div>
+                    <span className="text-5xl animate-pulse transition-transform duration-200 relative z-10" role="img" aria-label="Massive neural network">🧠</span>
                   </div>
                 </div>
                 
                 {/* Text loads last */}
                 <div 
                   id="stage-1-text"
-                  className={`transition-all duration-[2000ms] ease-out ${
+                  className={`transition-all duration-500 ease-out ${
                     isVisible('stage-1-text') 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-4'
@@ -299,7 +253,7 @@ export default function SmokeNet() {
               {/* Transformation Zone 1 - Enhanced Compression Animation */}
               <div 
                 id="transform-1"
-                className={`hidden lg:flex flex-col items-center justify-center space-y-3 transition-all duration-[2100ms] ease-out delay-[1050ms] ${
+                className={`hidden lg:flex flex-col items-center justify-center space-y-3 transition-all duration-600 ease-out delay-300 ${
                   isVisible('transform-1') 
                     ? 'opacity-100 scale-100' 
                     : 'opacity-0 scale-75'
@@ -308,7 +262,7 @@ export default function SmokeNet() {
                 {/* Enhanced dynamic compression visualization */}
                 <div className="flex space-x-4 items-center">
                   <div 
-                    className={`bg-orange-500/80 rounded-lg transition-all duration-[1400ms] ease-out delay-[1260ms] relative overflow-hidden ${
+                    className={`bg-orange-500/80 rounded-lg transition-all duration-500 ease-out delay-400 relative overflow-hidden ${
                       isVisible('transform-1') ? 'w-8 h-8' : 'w-16 h-16'
                     }`}
                   >
@@ -321,7 +275,7 @@ export default function SmokeNet() {
                   <div className="text-purple-400 text-4xl animate-spin">⚙️</div>
                   
                   <div 
-                    className={`bg-purple-500/80 rounded-lg transition-all duration-[1400ms] ease-out delay-[1400ms] relative overflow-hidden ${
+                    className={`bg-purple-500/80 rounded-lg transition-all duration-500 ease-out delay-500 relative overflow-hidden ${
                       isVisible('transform-1') ? 'w-4 h-4' : 'w-3 h-3'
                     }`}
                   >
@@ -337,7 +291,7 @@ export default function SmokeNet() {
                 {/* Enhanced compression progress bar */}
                 <div className="w-20 h-2 bg-gray-700 rounded-full overflow-hidden">
                   <div 
-                    className={`h-full bg-gradient-to-r from-orange-400 via-purple-400 to-green-400 transition-all duration-[2100ms] ease-out delay-[1260ms] ${
+                    className={`h-full bg-gradient-to-r from-orange-400 via-purple-400 to-green-400 transition-all duration-600 ease-out delay-400 ${
                       isVisible('transform-1') ? 'w-full' : 'w-0'
                     }`}
                   ></div>
@@ -352,40 +306,29 @@ export default function SmokeNet() {
               {/* Stage 2: Knowledge Distilled */}
               <div 
                 id="stage-2"
-                className={`flex-1 text-center relative transition-all duration-[2100ms] ease-out delay-[1540ms] ${
+                className={`flex-1 text-center relative transition-all duration-600 ease-out delay-600 ${
                   isVisible('stage-2') 
                     ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                     : 'opacity-0 translate-y-[40px] scale-110 blur-sm'
                 }`}
               >
                 <div className="relative mb-6">
-                  {/* Enhanced distillation flask with standardized hover effects */}
+                  {/* Enhanced distillation flask with simple hover effects */}
                   <div 
-                    className={`w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl transition-all duration-[2100ms] ease-out delay-[1680ms] hover:scale-125 hover:shadow-purple-500/70 hover:shadow-2xl cursor-pointer group relative ${
+                    className={`w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl transition-all duration-800 ease-out delay-300 cursor-pointer group relative ${
                       isVisible('stage-2') 
                         ? 'scale-100 opacity-100' 
-                        : 'scale-[2] opacity-60'
+                        : 'scale-[1.3] opacity-60'
                     }`}
-                    style={{
-                      transition: isVisible('stage-2') 
-                        ? 'transform 3000ms ease-out 500ms, opacity 3000ms ease-out 500ms, box-shadow 300ms ease-out' 
-                        : 'transform 3000ms ease-out 500ms, opacity 3000ms ease-out 500ms'
-                    }}
                   >
-                    <span className="text-5xl animate-pulse group-hover:animate-bounce group-hover:scale-110 transition-transform duration-300 relative z-10" role="img" aria-label="Knowledge distillation process">🧪</span>
-                    
-                    {/* Enhanced hover glow effect */}
-                    <div className="absolute inset-0 bg-purple-400/30 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse group-hover:scale-110"></div>
-                    
-                    {/* Pulsing ring effect on hover */}
-                    <div className="absolute inset-0 border-4 border-purple-400/50 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700"></div>
+                    <span className="text-5xl animate-pulse transition-transform duration-200 relative z-10" role="img" aria-label="Knowledge distillation process">🧪</span>
                   </div>
                 </div>
                 
                 {/* Text loads last */}
                 <div 
                   id="stage-2-text"
-                  className={`transition-all duration-[2000ms] ease-out ${
+                  className={`transition-all duration-500 ease-out ${
                     isVisible('stage-2-text') 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-4'
@@ -403,7 +346,7 @@ export default function SmokeNet() {
               {/* Transformation Zone 2 - Enhanced Deployment Animation with Green Circle */}
               <div 
                 id="transform-2"
-                className={`hidden lg:flex flex-col items-center justify-center space-y-3 transition-all duration-[2800ms] ease-out delay-[2030ms] ${
+                className={`hidden lg:flex flex-col items-center justify-center space-y-3 transition-all duration-600 ease-out delay-800 ${
                   isVisible('transform-2') 
                     ? 'opacity-100 scale-100' 
                     : 'opacity-0 scale-75'
@@ -420,17 +363,17 @@ export default function SmokeNet() {
                 {/* Deployment progress dots */}
                 <div className="flex space-x-1">
                   <div 
-                    className={`w-2 h-2 bg-green-400 rounded-full transition-all duration-[700ms] ease-out delay-[2380ms] ${
+                    className={`w-2 h-2 bg-green-400 rounded-full transition-all duration-300 ease-out delay-900 ${
                       isVisible('transform-2') ? 'opacity-100' : 'opacity-30'
                     }`}
                   ></div>
                   <div 
-                    className={`w-2 h-2 bg-green-400 rounded-full transition-all duration-[700ms] ease-out delay-[2590ms] ${
+                    className={`w-2 h-2 bg-green-400 rounded-full transition-all duration-300 ease-out delay-1000 ${
                       isVisible('transform-2') ? 'opacity-100' : 'opacity-30'
                     }`}
                   ></div>
                   <div 
-                    className={`w-2 h-2 bg-green-400 rounded-full transition-all duration-[700ms] ease-out delay-[2800ms] ${
+                    className={`w-2 h-2 bg-green-400 rounded-full transition-all duration-300 ease-out delay-1100 ${
                       isVisible('transform-2') ? 'opacity-100' : 'opacity-30'
                     }`}
                   ></div>
@@ -440,37 +383,26 @@ export default function SmokeNet() {
               {/* Stage 3: Field Deployed */}
               <div 
                 id="stage-3"
-                className={`flex-1 text-center relative transition-all duration-[2100ms] ease-out delay-[2520ms] ${
+                className={`flex-1 text-center relative transition-all duration-600 ease-out delay-900 ${
                   isVisible('stage-3') 
                     ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                     : 'opacity-0 translate-y-[40px] scale-110 blur-sm'
                 }`}
               >
                 <div className="relative mb-6">
-                  {/* Compact forest deployment with standardized hover effects */}
+                  {/* Compact forest deployment with simple hover effects */}
                   <div 
-                    className={`w-28 h-28 mx-auto bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-2xl transition-all duration-[2100ms] ease-out delay-[2660ms] hover:scale-125 hover:shadow-green-500/70 hover:shadow-2xl cursor-pointer group relative ${
+                    className={`w-28 h-28 mx-auto bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-2xl transition-all duration-800 ease-out delay-400 cursor-pointer group relative ${
                       isVisible('stage-3') 
                         ? 'scale-100 opacity-100' 
-                        : 'scale-[2] opacity-60'
+                        : 'scale-[1.3] opacity-60'
                     }`}
-                    style={{
-                      transition: isVisible('stage-3') 
-                        ? 'transform 3000ms ease-out 500ms, opacity 3000ms ease-out 500ms, box-shadow 300ms ease-out' 
-                        : 'transform 3000ms ease-out 500ms, opacity 3000ms ease-out 500ms'
-                    }}
                   >
-                    <span className="text-4xl animate-pulse group-hover:animate-bounce group-hover:scale-110 transition-transform duration-300 relative z-10" role="img" aria-label="Forest deployment">🌲</span>
-                    
-                    {/* Enhanced hover glow effect */}
-                    <div className="absolute inset-0 bg-green-400/30 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse group-hover:scale-110"></div>
-                    
-                    {/* Pulsing ring effect on hover */}
-                    <div className="absolute inset-0 border-4 border-green-400/50 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700"></div>
+                    <span className="text-4xl animate-pulse transition-transform duration-200 relative z-10" role="img" aria-label="Forest deployment">🌲</span>
                     
                     {/* Solar panel indicator */}
                     <span 
-                      className={`absolute -top-1 -right-1 text-sm transition-all duration-[1400ms] ease-out delay-[2940ms] ${
+                      className={`absolute -top-1 -right-1 text-sm transition-all duration-500 ease-out delay-1000 ${
                         isVisible('stage-3') 
                           ? 'opacity-100 scale-100' 
                           : 'opacity-0 scale-0'
@@ -486,7 +418,7 @@ export default function SmokeNet() {
                 {/* Text loads last */}
                 <div 
                   id="stage-3-text"
-                  className={`transition-all duration-[2000ms] ease-out ${
+                  className={`transition-all duration-500 ease-out ${
                     isVisible('stage-3-text') 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-4'
@@ -507,7 +439,7 @@ export default function SmokeNet() {
           <div className="lg:hidden flex flex-col items-center mt-8 space-y-6">
             <div 
               id="mobile-flow-1"
-              className={`transition-all duration-[2100ms] ease-out delay-[2100ms] ${
+              className={`transition-all duration-600 ease-out delay-800 ${
                 isVisible('mobile-flow-1') 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-4'
@@ -522,7 +454,7 @@ export default function SmokeNet() {
             
             <div 
               id="mobile-flow-2"
-              className={`transition-all duration-[2100ms] ease-out delay-[2800ms] ${
+              className={`transition-all duration-600 ease-out delay-1000 ${
                 isVisible('mobile-flow-2') 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-4'
@@ -540,79 +472,64 @@ export default function SmokeNet() {
 
       {/* Stats Block */}
       <section className="min-h-screen bg-gray-950 flex items-center justify-center px-6">
-        <div className="max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div 
-            id="stat-1"
-            data-animate
-            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
-              isVisible('stat-1') 
-                ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
-            }`}
-          >
-            <div className="text-4xl md:text-5xl font-light text-green-400 mb-4">97%</div>
-            <p className="text-xl text-gray-300">fire detection accuracy</p>
-          </div>
-          
-          <div 
-            id="stat-2"
-            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
-              isVisible('stat-2') 
-                ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
-            }`}
-          >
-            <div className="text-4xl md:text-5xl font-light text-blue-400 mb-4">2.3MB</div>
-            <p className="text-xl text-gray-300">model size</p>
-          </div>
-          
-          <div 
-            id="stat-3"
-            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
-              isVisible('stat-3') 
-                ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
-            }`}
-          >
-            <div className="text-4xl md:text-5xl font-light text-purple-400 mb-4">81x</div>
-            <p className="text-xl text-gray-300">smaller</p>
-          </div>
-          
-          <div 
-            id="stat-4"
-            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
-              isVisible('stat-4') 
-                ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
-            }`}
-          >
-            <div className="text-4xl md:text-5xl font-light text-orange-400 mb-4">Edge</div>
-            <p className="text-xl text-gray-300">deployable</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Final Section */}
-      <section className="min-h-screen bg-black flex items-center justify-center px-6">
-        <div className="max-w-4xl text-center">
-          <div 
-            id="final-quote"
-            data-animate
-            className={`transition-all duration-1000 ease-out ${
-              isVisible('final-quote') 
-                ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
-            }`}
-          >
-            <blockquote className="text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed mb-12 text-gray-100">
-              "SmokeNet won't stop climate change. But it might buy us 10 minutes. 
-              And sometimes, 10 minutes saves a town."
-            </blockquote>
+        <div className="max-w-4xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div 
+              id="stat-1"
+              data-animate
+              className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
+                isVisible('stat-1') 
+                  ? 'opacity-100 translate-y-0 scale-100 blur-0' 
+                  : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
+              }`}
+            >
+              <div className="text-4xl md:text-5xl font-light text-green-400 mb-4">97%</div>
+              <p className="text-xl text-gray-300">fire detection accuracy</p>
+            </div>
             
+            <div 
+              id="stat-2"
+              className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
+                isVisible('stat-2') 
+                  ? 'opacity-100 translate-y-0 scale-100 blur-0' 
+                  : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
+              }`}
+            >
+              <div className="text-4xl md:text-5xl font-light text-blue-400 mb-4">2.3MB</div>
+              <p className="text-xl text-gray-300">model size</p>
+            </div>
+            
+            <div 
+              id="stat-3"
+              className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
+                isVisible('stat-3') 
+                  ? 'opacity-100 translate-y-0 scale-100 blur-0' 
+                  : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
+              }`}
+            >
+              <div className="text-4xl md:text-5xl font-light text-purple-400 mb-4">81x</div>
+              <p className="text-xl text-gray-300">smaller</p>
+            </div>
+            
+            <div 
+              id="stat-4"
+              className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
+                isVisible('stat-4') 
+                  ? 'opacity-100 translate-y-0 scale-100 blur-0' 
+                  : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
+              }`}
+            >
+              <div className="text-4xl md:text-5xl font-light text-orange-400 mb-4">Edge</div>
+              <p className="text-xl text-gray-300">deployable</p>
+            </div>
+          </div>
+          
+          {/* GitHub Button */}
+          <div className="text-center">
             <div 
               id="final-button"
               data-animate
-              className={`transition-all duration-[3200ms] ease-out delay-[2800ms] ${
+              className={`transition-all duration-1000 ease-out delay-1500 ${
                 isVisible('final-button') 
                   ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                   : 'opacity-0 translate-y-[60px] scale-95 blur-sm'

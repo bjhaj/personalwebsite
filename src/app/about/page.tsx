@@ -5,12 +5,6 @@ export default function About() {
   return (
     <div className="min-h-screen bg-gray-950 py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-50 mb-6">
-            About
-          </h1>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Profile Section */}
           <div className="lg:col-span-2 space-y-8">
@@ -30,8 +24,7 @@ export default function About() {
                     Building AI that works in the real world
                   </h2>
                   <p className="text-lg text-gray-300 leading-relaxed">
-                    I'm a Creative Technologist who specializes in taking cutting-edge AI research 
-                    and making it work in production environments. My focus is on edge AI, model 
+                    I design intelligent systems that push the edge of what's possible. My focus is on edge AI, model 
                     optimization, and systems that can operate reliably in resource-constrained 
                     real-world scenarios. I'm also deeply interested in developing systems with 
                     positive social impact that genuinely improve people's lives.

@@ -58,7 +58,7 @@
 
   /* SmokeNet storytelling animations */
   .animate-fade-in {
-    animation: cinematicFadeIn 3.5s ease-out forwards;
+    animation: cinematicFadeIn 1.5s ease-out forwards;
   }
 
   .animate-fade-in-slow {
