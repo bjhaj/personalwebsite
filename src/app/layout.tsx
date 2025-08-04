@@ -6,7 +6,7 @@ import ConditionalNavigation from '@/components/ConditionalNavigation'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Baaz Jhaj - Creative Technologist',
+  title: 'Baaz Jhaj Studios',
   description: 'AI Engineer & Systems Builder specializing in edge AI, model compression, and real-world deployment of machine learning systems.',
 }
 
