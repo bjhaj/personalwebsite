@@ -29,13 +29,13 @@ export default function Home() {
                 </span>
                 <Link 
                   href="/projects" 
-                  className="text-black font-medium text-sm md:text-base hover:opacity-70 transition-opacity"
+                  className="text-black hover:text-gray-700 transition-colors duration-200 font-medium text-sm md:text-base"
                 >
                   Work
                 </Link>
                 <Link 
                   href="/about" 
-                  className="text-black font-medium text-sm md:text-base hover:opacity-70 transition-opacity"
+                  className="text-black hover:text-gray-700 transition-colors duration-200 font-medium text-sm md:text-base"
                 >
                   About
                 </Link>
