@@ -13,6 +13,7 @@ export default function SelfAlign() {
   const [currentStage, setCurrentStage] = useState(0)
   const [loopActive, setLoopActive] = useState(false)
   const [showGitHubButton, setShowGitHubButton] = useState(false)
+  const [reachedStages, setReachedStages] = useState(new Set())
 
   // Training loop stages
   const trainingStages = [
@@ -107,7 +108,12 @@ export default function SelfAlign() {
     if (!loopActive) return
 
     const interval = setInterval(() => {
-      setCurrentStage(prev => (prev + 1) % trainingStages.length)
+      setCurrentStage(prev => {
+        const nextStage = (prev + 1) % trainingStages.length
+        // Track reached stages for mobile persistence
+        setReachedStages(prevReached => new Set([...prevReached, prev, nextStage]))
+        return nextStage
+      })
     }, 1200) // 12 seconds / 5 stages = 2.4 seconds per stage
 
     // Show GitHub button after one full cycle (12 seconds)
@@ -141,6 +147,41 @@ export default function SelfAlign() {
   const isArrowVisible = (arrowIndex: number) => {
     if (!loopActive) return false
     return currentStage > arrowIndex || isInTransition(arrowIndex)
+  }
+
+  // Helper function to check if a stage should stay visible on mobile (once reached, stays visible)
+  const isStageVisibleMobile = (stageIndex: number) => {
+    if (!loopActive) return false
+    // On mobile, once we've reached a stage, keep it visible
+    return reachedStages.has(stageIndex) || currentStage >= stageIndex
+  }
+
+  // Helper function to check if a stage should be animating (current stage or stay animating on mobile)
+  const isStageAnimating = (stageIndex: number) => {
+    if (!loopActive) return false
+    return currentStage === stageIndex
+  }
+
+  // Combined function for stage visibility (desktop vs mobile behavior)
+  const getStageVisibility = (stageIndex: number) => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      // Mobile: once reached, stay visible
+      return isStageVisibleMobile(stageIndex)
+    } else {
+      // Desktop: progressive reveal/hide
+      return isStageVisible(stageIndex)
+    }
+  }
+
+  // Helper function for icon animations - keep animating on mobile once reached
+  const getIconAnimation = (stageIndex: number) => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      // Mobile: keep animating if stage has been reached
+      return reachedStages.has(stageIndex) || currentStage === stageIndex
+    } else {
+      // Desktop: only animate when current stage
+      return currentStage === stageIndex
+    }
   }
 
   const isVisible = (id: string) => visibleElements.has(id)
@@ -263,75 +304,78 @@ export default function SelfAlign() {
             </p>
           </div>
 
-          {/* Horizontal Animation Container */}
-          <div className="relative overflow-hidden bg-gray-900/50 rounded-2xl p-8">
-            <div className="flex items-center justify-between space-x-8">
+          {/* Responsive Animation Container - Horizontal on desktop, Vertical on mobile */}
+          <div className="relative overflow-hidden bg-gray-900/50 rounded-2xl p-4 md:p-8">
+            <div className="flex flex-col md:flex-row items-center md:justify-between space-y-6 md:space-y-0 md:space-x-8">
               
               {/* Stage 1: Define Values & Persona */}
               <div className={`flex-1 flex flex-col items-center transition-all duration-500 ${
-                isStageVisible(0) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                getStageVisibility(0) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
               }`}>
-                <div className={`w-24 h-24 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 ${
-                  currentStage === 0 ? 'scale-110 bg-blue-200 shadow-lg shadow-blue-300/30' : 'scale-100'
+                <div className={`w-20 h-20 md:w-24 md:h-24 bg-blue-100 rounded-2xl flex items-center justify-center mb-3 md:mb-4 transition-all duration-500 ${
+                  isStageAnimating(0) ? 'scale-110 bg-blue-200 shadow-lg shadow-blue-300/30' : 'scale-100'
                 }`}>
                   <div className="relative">
                     {/* Gear Icon */}
-                    <div className={`text-3xl text-blue-600 ${currentStage === 0 ? 'animate-spin' : ''}`} 
-                         style={{ animation: currentStage === 0 ? 'spin 2s linear infinite' : 'none' }}>
+                    <div className={`text-2xl md:text-3xl text-blue-600 ${isStageAnimating(0) ? 'animate-spin' : ''}`} 
+                         style={{ animation: isStageAnimating(0) ? 'spin 2s linear infinite' : 'none' }}>
                       ⚙️
                     </div>
                     {/* Sliders */}
                     <div className="absolute -bottom-2 -right-2 space-y-0.5">
                       <div className="w-3 h-0.5 bg-blue-300 rounded-full relative">
                         <div className={`w-0.5 h-0.5 bg-blue-600 rounded-full absolute transition-all duration-1000 ${
-                          currentStage === 0 ? 'left-2' : 'left-0.5'
+                          isStageAnimating(0) ? 'left-2' : 'left-0.5'
                         }`}></div>
                       </div>
                       <div className="w-3 h-0.5 bg-blue-300 rounded-full relative">
                         <div className={`w-0.5 h-0.5 bg-blue-600 rounded-full absolute transition-all duration-1000 ${
-                          currentStage === 0 ? 'left-1' : 'left-2'
+                          isStageAnimating(0) ? 'left-1' : 'left-2'
                         }`}></div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <h3 className="text-sm font-medium text-blue-300 text-center mb-1">Define Values & Persona</h3>
+                <h3 className="text-xs md:text-sm font-medium text-blue-300 text-center mb-1">Define Values & Persona</h3>
                 <p className="text-xs text-gray-400 text-center max-w-32">Configure desired model behavior</p>
               </div>
 
-              {/* Arrow 1->2 */}
+              {/* Arrow 1->2 - Responsive direction */}
               <div className={`transition-all duration-500 ${
                 isArrowVisible(0) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
               } ${isInTransition(0) ? 'scale-110' : ''}`}>
-                <div className="text-gray-400 text-2xl">→</div>
+                <div className="text-gray-400 text-xl md:text-2xl">
+                  <span className="block md:hidden">↓</span>
+                  <span className="hidden md:block">→</span>
+                </div>
               </div>
 
               {/* Stage 2: Generate Synthetic Data */}
               <div className={`flex-1 flex flex-col items-center transition-all duration-500 ${
-                isStageVisible(1) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                getStageVisibility(1) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
               }`}>
-                <div className={`w-24 h-24 bg-green-100 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 ${
-                  currentStage === 1 ? 'scale-110 bg-green-200 shadow-lg shadow-green-300/30' : 'scale-100'
+                <div className={`w-20 h-20 md:w-24 md:h-24 bg-green-100 rounded-2xl flex items-center justify-center mb-3 md:mb-4 transition-all duration-500 ${
+                  isStageAnimating(1) ? 'scale-110 bg-green-200 shadow-lg shadow-green-300/30' : 'scale-100'
                 }`}>
                   <div className="flex space-x-1">
-                    <div className={`w-3 h-3 bg-green-500 rounded-full flex items-center justify-center text-xs transition-all duration-300 ${
-                      currentStage === 1 ? 'opacity-100 scale-100' : 'opacity-40 scale-75'
-                    }`} style={{ transitionDelay: currentStage === 1 ? '0ms' : '0ms' }}>
+                    <div className={`w-2.5 h-2.5 md:w-3 md:h-3 bg-green-500 rounded-full flex items-center justify-center text-xs transition-all duration-300 ${
+                      getIconAnimation(1) ? 'opacity-100 scale-100' : 'opacity-40 scale-75'
+                    }`} style={{ transitionDelay: getIconAnimation(1) ? '0ms' : '0ms' }}>
                       💬
                     </div>
-                    <div className={`w-3 h-3 bg-green-600 rounded-full flex items-center justify-center text-xs transition-all duration-300 ${
-                      currentStage === 1 ? 'opacity-100 scale-100' : 'opacity-40 scale-75'
-                    }`} style={{ transitionDelay: currentStage === 1 ? '300ms' : '0ms' }}>
+                    <div className={`w-2.5 h-2.5 md:w-3 md:h-3 bg-green-600 rounded-full flex items-center justify-center text-xs transition-all duration-300 ${
+                      getIconAnimation(1) ? 'opacity-100 scale-100' : 'opacity-40 scale-75'
+                    }`} style={{ transitionDelay: getIconAnimation(1) ? '300ms' : '0ms' }}>
                       💬
                     </div>
-                    <div className={`w-3 h-3 bg-green-700 rounded-full flex items-center justify-center text-xs transition-all duration-300 ${
-                      currentStage === 1 ? 'opacity-100 scale-100' : 'opacity-40 scale-75'
-                    }`} style={{ transitionDelay: currentStage === 1 ? '600ms' : '0ms' }}>
+                    <div className={`w-2.5 h-2.5 md:w-3 md:h-3 bg-green-700 rounded-full flex items-center justify-center text-xs transition-all duration-300 ${
+                      getIconAnimation(1) ? 'opacity-100 scale-100' : 'opacity-40 scale-75'
+                    }`} style={{ transitionDelay: getIconAnimation(1) ? '600ms' : '0ms' }}>
                       💬
                     </div>
                   </div>
                 </div>
-                <h3 className="text-sm font-medium text-green-300 text-center mb-1">Generate Synthetic Data</h3>
+                <h3 className="text-xs md:text-sm font-medium text-green-300 text-center mb-1">Generate Synthetic Data</h3>
                 <p className="text-xs text-gray-400 text-center max-w-32">Create training examples from values</p>
               </div>
 
@@ -339,47 +383,50 @@ export default function SelfAlign() {
               <div className={`transition-all duration-500 ${
                 isArrowVisible(1) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
               } ${isInTransition(1) ? 'scale-110' : ''}`}>
-                <div className="text-gray-400 text-2xl">→</div>
+                <div className="text-gray-400 text-xl md:text-2xl">
+                  <span className="block md:hidden">↓</span>
+                  <span className="hidden md:block">→</span>
+                </div>
               </div>
 
               {/* Stage 3: Fine-Tune on Data */}
               <div className={`flex-1 flex flex-col items-center transition-all duration-500 ${
-                isStageVisible(2) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                getStageVisibility(2) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
               }`}>
-                <div className={`w-24 h-24 bg-purple-100 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 ${
-                  currentStage === 2 ? 'scale-110 bg-purple-200 shadow-lg shadow-purple-300/30' : 'scale-100'
+                <div className={`w-20 h-20 md:w-24 md:h-24 bg-purple-100 rounded-2xl flex items-center justify-center mb-3 md:mb-4 transition-all duration-500 ${
+                  isStageAnimating(2) ? 'scale-110 bg-purple-200 shadow-lg shadow-purple-300/30' : 'scale-100'
                 }`}>
                   <div className="grid grid-cols-3 gap-1">
                     {/* Input layer */}
                     <div className="flex flex-col space-y-1">
-                      <div className={`w-1.5 h-1.5 bg-purple-400 rounded-full transition-all duration-200 ${
-                        currentStage === 2 ? 'animate-pulse bg-purple-300' : ''
-                      }`} style={{ animationDelay: currentStage === 2 ? '0ms' : '0ms' }}></div>
-                      <div className={`w-1.5 h-1.5 bg-purple-400 rounded-full transition-all duration-200 ${
-                        currentStage === 2 ? 'animate-pulse bg-purple-300' : ''
-                      }`} style={{ animationDelay: currentStage === 2 ? '100ms' : '0ms' }}></div>
-                      <div className={`w-1.5 h-1.5 bg-purple-400 rounded-full transition-all duration-200 ${
-                        currentStage === 2 ? 'animate-pulse bg-purple-300' : ''
-                      }`} style={{ animationDelay: currentStage === 2 ? '200ms' : '0ms' }}></div>
+                      <div className={`w-1 h-1 md:w-1.5 md:h-1.5 bg-purple-400 rounded-full transition-all duration-200 ${
+                        getIconAnimation(2) ? 'animate-pulse bg-purple-300' : ''
+                      }`} style={{ animationDelay: getIconAnimation(2) ? '0ms' : '0ms' }}></div>
+                      <div className={`w-1 h-1 md:w-1.5 md:h-1.5 bg-purple-400 rounded-full transition-all duration-200 ${
+                        getIconAnimation(2) ? 'animate-pulse bg-purple-300' : ''
+                      }`} style={{ animationDelay: getIconAnimation(2) ? '100ms' : '0ms' }}></div>
+                      <div className={`w-1 h-1 md:w-1.5 md:h-1.5 bg-purple-400 rounded-full transition-all duration-200 ${
+                        getIconAnimation(2) ? 'animate-pulse bg-purple-300' : ''
+                      }`} style={{ animationDelay: getIconAnimation(2) ? '200ms' : '0ms' }}></div>
                     </div>
                     {/* Hidden layer */}
                     <div className="flex flex-col space-y-1">
-                      <div className={`w-1.5 h-1.5 bg-purple-500 rounded-full transition-all duration-200 ${
-                        currentStage === 2 ? 'animate-pulse bg-purple-400' : ''
-                      }`} style={{ animationDelay: currentStage === 2 ? '300ms' : '0ms' }}></div>
-                      <div className={`w-1.5 h-1.5 bg-purple-500 rounded-full transition-all duration-200 ${
-                        currentStage === 2 ? 'animate-pulse bg-purple-400' : ''
-                      }`} style={{ animationDelay: currentStage === 2 ? '400ms' : '0ms' }}></div>
+                      <div className={`w-1 h-1 md:w-1.5 md:h-1.5 bg-purple-500 rounded-full transition-all duration-200 ${
+                        getIconAnimation(2) ? 'animate-pulse bg-purple-400' : ''
+                      }`} style={{ animationDelay: getIconAnimation(2) ? '300ms' : '0ms' }}></div>
+                      <div className={`w-1 h-1 md:w-1.5 md:h-1.5 bg-purple-500 rounded-full transition-all duration-200 ${
+                        getIconAnimation(2) ? 'animate-pulse bg-purple-400' : ''
+                      }`} style={{ animationDelay: getIconAnimation(2) ? '400ms' : '0ms' }}></div>
                     </div>
                     {/* Output layer */}
                     <div className="flex flex-col space-y-1 items-center">
-                      <div className={`w-1.5 h-1.5 bg-purple-600 rounded-full transition-all duration-200 ${
-                        currentStage === 2 ? 'animate-pulse bg-purple-500' : ''
-                      }`} style={{ animationDelay: currentStage === 2 ? '500ms' : '0ms' }}></div>
+                      <div className={`w-1 h-1 md:w-1.5 md:h-1.5 bg-purple-600 rounded-full transition-all duration-200 ${
+                        getIconAnimation(2) ? 'animate-pulse bg-purple-500' : ''
+                      }`} style={{ animationDelay: getIconAnimation(2) ? '500ms' : '0ms' }}></div>
                     </div>
                   </div>
                 </div>
-                <h3 className="text-sm font-medium text-purple-300 text-center mb-1">Fine-Tune on Data</h3>
+                <h3 className="text-xs md:text-sm font-medium text-purple-300 text-center mb-1">Fine-Tune on Data</h3>
                 <p className="text-xs text-gray-400 text-center max-w-32">Learn from synthetic examples</p>
               </div>
 
@@ -387,30 +434,33 @@ export default function SelfAlign() {
               <div className={`transition-all duration-500 ${
                 isArrowVisible(2) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
               } ${isInTransition(2) ? 'scale-110' : ''}`}>
-                <div className="text-gray-400 text-2xl">→</div>
+                <div className="text-gray-400 text-xl md:text-2xl">
+                  <span className="block md:hidden">↓</span>
+                  <span className="hidden md:block">→</span>
+                </div>
               </div>
 
               {/* Stage 4: Self-Optimize Responses */}
               <div className={`flex-1 flex flex-col items-center transition-all duration-500 ${
-                isStageVisible(3) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                getStageVisibility(3) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
               }`}>
-                <div className={`w-24 h-24 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 ${
-                  currentStage === 3 ? 'scale-110 bg-orange-200 shadow-lg shadow-orange-300/30' : 'scale-100'
+                <div className={`w-20 h-20 md:w-24 md:h-24 bg-orange-100 rounded-2xl flex items-center justify-center mb-3 md:mb-4 transition-all duration-500 ${
+                  isStageAnimating(3) ? 'scale-110 bg-orange-200 shadow-lg shadow-orange-300/30' : 'scale-100'
                 }`}>
                   <div className="flex flex-col items-center space-y-1">
                     <div className="flex space-x-1">
-                      <div className="w-3 h-3 bg-orange-300 rounded-full flex items-center justify-center text-xs">A</div>
-                      <div className="w-3 h-3 bg-orange-400 rounded-full flex items-center justify-center text-xs">B</div>
-                      <div className="w-3 h-3 bg-orange-500 rounded-full flex items-center justify-center text-xs">C</div>
+                      <div className="w-2.5 h-2.5 md:w-3 md:h-3 bg-orange-300 rounded-full flex items-center justify-center text-xs">A</div>
+                      <div className="w-2.5 h-2.5 md:w-3 md:h-3 bg-orange-400 rounded-full flex items-center justify-center text-xs">B</div>
+                      <div className="w-2.5 h-2.5 md:w-3 md:h-3 bg-orange-500 rounded-full flex items-center justify-center text-xs">C</div>
                     </div>
-                    <div className={`text-lg transition-all duration-300 ${
-                      currentStage === 3 ? 'animate-bounce opacity-100 scale-110' : 'opacity-40 scale-75'
+                    <div className={`text-sm md:text-lg transition-all duration-300 ${
+                      getIconAnimation(3) ? 'animate-bounce opacity-100 scale-110' : 'opacity-40 scale-75'
                     }`}>
                       👍
                     </div>
                   </div>
                 </div>
-                <h3 className="text-sm font-medium text-orange-300 text-center mb-1">Self-Optimize Responses</h3>
+                <h3 className="text-xs md:text-sm font-medium text-orange-300 text-center mb-1">Self-Optimize Responses</h3>
                 <p className="text-xs text-gray-400 text-center max-w-32">Select preferred outputs</p>
               </div>
 
@@ -418,24 +468,27 @@ export default function SelfAlign() {
               <div className={`transition-all duration-500 ${
                 isArrowVisible(3) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
               } ${isInTransition(3) ? 'scale-110' : ''}`}>
-                <div className="text-gray-400 text-2xl">→</div>
+                <div className="text-gray-400 text-xl md:text-2xl">
+                  <span className="block md:hidden">↓</span>
+                  <span className="hidden md:block">→</span>
+                </div>
               </div>
 
               {/* Stage 5: Track Alignment Drift */}
               <div className={`flex-1 flex flex-col items-center transition-all duration-500 ${
-                isStageVisible(4) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                getStageVisibility(4) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
               }`}>
-                <div className={`w-24 h-24 bg-pink-100 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 ${
-                  currentStage === 4 ? 'scale-110 bg-pink-200 shadow-lg shadow-pink-300/30' : 'scale-100'
+                <div className={`w-20 h-20 md:w-24 md:h-24 bg-pink-100 rounded-2xl flex items-center justify-center mb-3 md:mb-4 transition-all duration-500 ${
+                  isStageAnimating(4) ? 'scale-110 bg-pink-200 shadow-lg shadow-pink-300/30' : 'scale-100'
                 }`}>
-                  <div className="relative w-12 h-12">
+                  <div className="relative w-10 h-10 md:w-12 md:h-12">
                     {/* Gauge background */}
-                    <div className="w-full h-6 bg-gray-300 rounded-full overflow-hidden">
+                    <div className="w-full h-5 md:h-6 bg-gray-300 rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-red-400 via-yellow-400 to-green-400 rounded-full"></div>
                     </div>
                     {/* Needle - starts at left (❌), sweeps to right (✅) when stage is active */}
-                    <div className={`absolute top-0 w-0.5 h-6 bg-gray-700 rounded-full transition-all duration-1500 ${
-                      currentStage === 4 ? 'left-8' : 'left-2'
+                    <div className={`absolute top-0 w-0.5 h-5 md:h-6 bg-gray-700 rounded-full transition-all duration-1500 ${
+                      isStageAnimating(4) ? 'left-6 md:left-8' : 'left-1.5 md:left-2'
                     }`}></div>
                     {/* Labels */}
                     <div className="flex justify-between text-xs text-gray-500 mt-1">
@@ -444,7 +497,7 @@ export default function SelfAlign() {
                     </div>
                   </div>
                 </div>
-                <h3 className="text-sm font-medium text-pink-300 text-center mb-1">Track Alignment Drift</h3>
+                <h3 className="text-xs md:text-sm font-medium text-pink-300 text-center mb-1">Track Alignment Drift</h3>
                 <p className="text-xs text-gray-400 text-center max-w-32">Monitor value consistency</p>
               </div>
             </div>

@@ -50,8 +50,6 @@ export default function SmokeNet() {
               setTimeout(() => setVisibleElements(prev => new Set([...prev, 'transform-2'])), 2600)
               setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-3'])), 3200)
               setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-3-text'])), 3700)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'mobile-flow-1'])), 1200)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'mobile-flow-2'])), 1800)
             }
             
             // For stats, trigger sequential animations
@@ -253,43 +251,43 @@ export default function SmokeNet() {
               {/* Transformation Zone 1 - Enhanced Compression Animation */}
               <div 
                 id="transform-1"
-                className={`hidden lg:flex flex-col items-center justify-center space-y-3 transition-all duration-600 ease-out delay-300 ${
+                className={`flex flex-col items-center justify-center space-y-2 md:space-y-3 transition-all duration-600 ease-out delay-300 ${
                   isVisible('transform-1') 
                     ? 'opacity-100 scale-100' 
                     : 'opacity-0 scale-75'
                 }`}
               >
                 {/* Enhanced dynamic compression visualization */}
-                <div className="flex space-x-4 items-center">
+                <div className="flex space-x-2 md:space-x-4 items-center">
                   <div 
                     className={`bg-orange-500/80 rounded-lg transition-all duration-500 ease-out delay-400 relative overflow-hidden ${
-                      isVisible('transform-1') ? 'w-8 h-8' : 'w-16 h-16'
+                      isVisible('transform-1') ? 'w-6 h-6 md:w-8 md:h-8' : 'w-12 h-12 md:w-16 md:h-16'
                     }`}
                   >
                     {/* Compression particles */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-2 h-2 bg-orange-300 rounded-full animate-ping"></div>
+                      <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-orange-300 rounded-full animate-ping"></div>
                     </div>
                   </div>
                   
-                  <div className="text-purple-400 text-4xl animate-spin">⚙️</div>
+                  <div className="text-purple-400 text-2xl md:text-4xl animate-spin">⚙️</div>
                   
                   <div 
                     className={`bg-purple-500/80 rounded-lg transition-all duration-500 ease-out delay-500 relative overflow-hidden ${
-                      isVisible('transform-1') ? 'w-4 h-4' : 'w-3 h-3'
+                      isVisible('transform-1') ? 'w-3 h-3 md:w-4 md:h-4' : 'w-2 h-2 md:w-3 md:h-3'
                     }`}
                   >
                     {/* Compressed particles */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-1 h-1 bg-purple-300 rounded-full animate-pulse"></div>
+                      <div className="w-0.5 h-0.5 md:w-1 md:h-1 bg-purple-300 rounded-full animate-pulse"></div>
                     </div>
                   </div>
                 </div>
                 
-                <span className="text-purple-400 text-sm font-medium animate-pulse">Compressing Model Size...</span>
+                <span className="text-purple-400 text-xs md:text-sm font-medium animate-pulse">Compressing Model Size...</span>
                 
                 {/* Enhanced compression progress bar */}
-                <div className="w-20 h-2 bg-gray-700 rounded-full overflow-hidden">
+                <div className="w-16 h-1.5 md:w-20 md:h-2 bg-gray-700 rounded-full overflow-hidden">
                   <div 
                     className={`h-full bg-gradient-to-r from-orange-400 via-purple-400 to-green-400 transition-all duration-600 ease-out delay-400 ${
                       isVisible('transform-1') ? 'w-full' : 'w-0'
@@ -346,7 +344,7 @@ export default function SmokeNet() {
               {/* Transformation Zone 2 - Enhanced Deployment Animation with Green Circle */}
               <div 
                 id="transform-2"
-                className={`hidden lg:flex flex-col items-center justify-center space-y-3 transition-all duration-600 ease-out delay-800 ${
+                className={`flex flex-col items-center justify-center space-y-2 md:space-y-3 transition-all duration-600 ease-out delay-800 ${
                   isVisible('transform-2') 
                     ? 'opacity-100 scale-100' 
                     : 'opacity-0 scale-75'
@@ -354,26 +352,26 @@ export default function SmokeNet() {
               >
                 {/* Enhanced deployment visualization */}
                 <div className="relative">
-                  <div className="w-8 h-8 bg-green-500/60 rounded-full animate-pulse"></div>
-                  <div className="absolute top-0 left-0 w-8 h-8 bg-green-400/30 rounded-full animate-ping"></div>
-                  <div className="absolute top-1 left-1 w-6 h-6 bg-green-300/20 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="w-6 h-6 md:w-8 md:h-8 bg-green-500/60 rounded-full animate-pulse"></div>
+                  <div className="absolute top-0 left-0 w-6 h-6 md:w-8 md:h-8 bg-green-400/30 rounded-full animate-ping"></div>
+                  <div className="absolute top-0.5 left-0.5 md:top-1 md:left-1 w-5 h-5 md:w-6 md:h-6 bg-green-300/20 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
                 </div>
-                <span className="text-green-400 text-sm font-medium animate-pulse">Deploying to Edge...</span>
+                <span className="text-green-400 text-xs md:text-sm font-medium animate-pulse">Deploying to Edge...</span>
                 
                 {/* Deployment progress dots */}
                 <div className="flex space-x-1">
                   <div 
-                    className={`w-2 h-2 bg-green-400 rounded-full transition-all duration-300 ease-out delay-900 ${
+                    className={`w-1.5 h-1.5 md:w-2 md:h-2 bg-green-400 rounded-full transition-all duration-300 ease-out delay-900 ${
                       isVisible('transform-2') ? 'opacity-100' : 'opacity-30'
                     }`}
                   ></div>
                   <div 
-                    className={`w-2 h-2 bg-green-400 rounded-full transition-all duration-300 ease-out delay-1000 ${
+                    className={`w-1.5 h-1.5 md:w-2 md:h-2 bg-green-400 rounded-full transition-all duration-300 ease-out delay-1000 ${
                       isVisible('transform-2') ? 'opacity-100' : 'opacity-30'
                     }`}
                   ></div>
                   <div 
-                    className={`w-2 h-2 bg-green-400 rounded-full transition-all duration-300 ease-out delay-1100 ${
+                    className={`w-1.5 h-1.5 md:w-2 md:h-2 bg-green-400 rounded-full transition-all duration-300 ease-out delay-1100 ${
                       isVisible('transform-2') ? 'opacity-100' : 'opacity-30'
                     }`}
                   ></div>
@@ -434,93 +432,60 @@ export default function SmokeNet() {
               </div>
             </div>
           </div>
-
-          {/* Mobile flow indicators */}
-          <div className="lg:hidden flex flex-col items-center mt-8 space-y-6">
-            <div 
-              id="mobile-flow-1"
-              className={`transition-all duration-600 ease-out delay-800 ${
-                isVisible('mobile-flow-1') 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-4'
-              }`}
-            >
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>
-                <div className="w-8 h-px bg-gradient-to-r from-orange-400 to-purple-400"></div>
-                <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              </div>
-            </div>
-            
-            <div 
-              id="mobile-flow-2"
-              className={`transition-all duration-600 ease-out delay-1000 ${
-                isVisible('mobile-flow-2') 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-4'
-              }`}
-            >
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
-                <div className="w-8 h-px bg-gradient-to-r from-purple-400 to-green-400"></div>
-                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* Stats Block */}
       <section className="min-h-screen bg-gray-950 flex items-center justify-center px-6">
         <div className="max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-2 gap-4 md:gap-8 mb-16">
             <div 
               id="stat-1"
               data-animate
-              className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
+              className={`bg-black/50 p-4 md:p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
                 isVisible('stat-1') 
                   ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                   : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
               }`}
             >
-              <div className="text-4xl md:text-5xl font-light text-green-400 mb-4">97%</div>
-              <p className="text-xl text-gray-300">fire detection accuracy</p>
+              <div className="text-3xl md:text-4xl lg:text-5xl font-light text-green-400 mb-2 md:mb-4">97%</div>
+              <p className="text-sm md:text-xl text-gray-300">fire detection accuracy</p>
             </div>
             
             <div 
               id="stat-2"
-              className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
+              className={`bg-black/50 p-4 md:p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
                 isVisible('stat-2') 
                   ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                   : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
               }`}
             >
-              <div className="text-4xl md:text-5xl font-light text-blue-400 mb-4">2.3MB</div>
-              <p className="text-xl text-gray-300">model size</p>
+              <div className="text-3xl md:text-4xl lg:text-5xl font-light text-blue-400 mb-2 md:mb-4">2.3MB</div>
+              <p className="text-sm md:text-xl text-gray-300">model size</p>
             </div>
             
             <div 
               id="stat-3"
-              className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
+              className={`bg-black/50 p-4 md:p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
                 isVisible('stat-3') 
                   ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                   : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
               }`}
             >
-              <div className="text-4xl md:text-5xl font-light text-purple-400 mb-4">81x</div>
-              <p className="text-xl text-gray-300">smaller</p>
+              <div className="text-3xl md:text-4xl lg:text-5xl font-light text-purple-400 mb-2 md:mb-4">81x</div>
+              <p className="text-sm md:text-xl text-gray-300">smaller</p>
             </div>
             
             <div 
               id="stat-4"
-              className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
+              className={`bg-black/50 p-4 md:p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
                 isVisible('stat-4') 
                   ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                   : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
               }`}
             >
-              <div className="text-4xl md:text-5xl font-light text-orange-400 mb-4">Edge</div>
-              <p className="text-xl text-gray-300">deployable</p>
+              <div className="text-3xl md:text-4xl lg:text-5xl font-light text-orange-400 mb-2 md:mb-4">Edge</div>
+              <p className="text-sm md:text-xl text-gray-300">deployable</p>
             </div>
           </div>
           
@@ -535,14 +500,17 @@ export default function SmokeNet() {
                   : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
               }`}
             >
-              <Link 
+              <a 
                 href="https://github.com/bjhaj/SmokeNet"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-8 py-4 border border-white/30 hover:border-white/60 text-white hover:bg-white/10 transition-all duration-300 text-lg tracking-wide"
+                className="inline-flex items-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 rounded-xl transition-all duration-300 hover:scale-105 font-medium text-lg"
               >
-                View on GitHub
-              </Link>
+                <svg className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View the GitHub
+              </a>
             </div>
           </div>
         </div>
