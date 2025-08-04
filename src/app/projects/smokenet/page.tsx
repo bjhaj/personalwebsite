@@ -35,23 +35,23 @@ export default function SmokeNet() {
             // For damage section, trigger sequential animations
             const id = entry.target.id
             if (id === 'damage-1') {
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'damage-2'])), 1400)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'damage-3'])), 2800)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'damage-4'])), 4200)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'damage-2'])), 700)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'damage-3'])), 1400)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'damage-4'])), 2100)
             }
             
             // For intro concepts, trigger sequential animations
             if (id === 'intro-title') {
               setTimeout(() => setVisibleElements(prev => new Set([...prev, 'flow-line'])), 350)
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-1'])), 600)      // Brain first
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-1-text'])), 3400) // Brain text after shrinking is complete
-              setTimeout(() => setBrainAnimationComplete(true), 4100)                                // Enable brain hover after animation is complete
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'transform-1'])), 3800)  // Compression starts
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-2'])), 6400)     // Test tube
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-2-text'])), 6900) // Test tube text
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'transform-2'])), 7400)  // Deployment
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-3'])), 7900)    // Tree
-              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-3-text'])), 8400) // Tree text
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-1'])), 600)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-1-text'])), 2400)
+              setTimeout(() => setBrainAnimationComplete(true), 3100)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'transform-1'])), 2800)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-2'])), 4400)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-2-text'])), 4900)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'transform-2'])), 5400)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-3'])), 5900)
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'stage-3-text'])), 6400)
               setTimeout(() => setVisibleElements(prev => new Set([...prev, 'mobile-flow-1'])), 1400)
               setTimeout(() => setVisibleElements(prev => new Set([...prev, 'mobile-flow-2'])), 2100)
             }
@@ -66,8 +66,8 @@ export default function SmokeNet() {
         })
       },
       { 
-        threshold: 0.1, // Trigger when 10% of element is visible
-        rootMargin: '0px 0px -20% 0px' // Trigger earlier, when element is 20% from bottom of viewport
+        threshold: 0.2, // Trigger when 20% of element is visible
+        rootMargin: '0px 0px -10% 0px' // Trigger when element is in top 90% of viewport
       }
     )
 
@@ -126,7 +126,7 @@ export default function SmokeNet() {
           <div 
             id="damage-1"
             data-animate
-            className={`transition-all duration-[2500ms] ease-out ${
+            className={`transition-all duration-1000 ease-out ${
               isVisible('damage-1') 
                 ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                 : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
@@ -139,10 +139,10 @@ export default function SmokeNet() {
           
           <div 
             id="damage-2"
-            className={`transition-all duration-[3200ms] ease-out ${
+            className={`transition-all duration-1000 ease-out ${
               isVisible('damage-2') 
                 ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[80px] scale-90 blur-md'
+                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
             }`}
           >
             <p className="text-4xl md:text-6xl lg:text-7xl font-light text-white">
@@ -152,10 +152,10 @@ export default function SmokeNet() {
           
           <div 
             id="damage-3"
-            className={`transition-all duration-[3500ms] ease-out ${
+            className={`transition-all duration-1000 ease-out ${
               isVisible('damage-3') 
                 ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[80px] scale-90 blur-md'
+                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
             }`}
           >
             <p className="text-4xl md:text-6xl lg:text-7xl font-light text-white">
@@ -165,10 +165,10 @@ export default function SmokeNet() {
           
           <div 
             id="damage-4"
-            className={`transition-all duration-[3500ms] ease-out ${
+            className={`transition-all duration-1000 ease-out ${
               isVisible('damage-4') 
                 ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[80px] scale-90 blur-md'
+                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
             }`}
           >
             <p className="text-4xl md:text-6xl lg:text-7xl font-light text-orange-400">
@@ -184,7 +184,7 @@ export default function SmokeNet() {
           <div 
             id="problem-1"
             data-animate
-            className={`transition-all duration-[3200ms] ease-out delay-[700ms] ${
+            className={`transition-all duration-1000 ease-out ${
               isVisible('problem-1') 
                 ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                 : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
@@ -208,7 +208,7 @@ export default function SmokeNet() {
             <h2 
               id="intro-title"
               data-animate
-              className={`text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white transition-all duration-[3200ms] ease-out ${
+              className={`text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white transition-all duration-1000 ease-out ${
                 isVisible('intro-title') 
                   ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                   : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
@@ -226,7 +226,7 @@ export default function SmokeNet() {
               {/* Stage 1: Heavyweight Learner */}
               <div 
                 id="stage-1"
-                className={`flex-1 text-center relative transition-all duration-[2100ms] ease-out ${
+                className={`flex-1 text-center relative transition-all duration-1000 ease-out ${
                   isVisible('stage-1') 
                     ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                     : 'opacity-0 translate-y-[40px] scale-110 blur-sm'
@@ -544,7 +544,7 @@ export default function SmokeNet() {
           <div 
             id="stat-1"
             data-animate
-            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-[3200ms] ease-out ${
+            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
               isVisible('stat-1') 
                 ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                 : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
@@ -556,7 +556,7 @@ export default function SmokeNet() {
           
           <div 
             id="stat-2"
-            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-[3200ms] ease-out ${
+            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
               isVisible('stat-2') 
                 ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                 : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
@@ -568,7 +568,7 @@ export default function SmokeNet() {
           
           <div 
             id="stat-3"
-            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-[3200ms] ease-out ${
+            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
               isVisible('stat-3') 
                 ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                 : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
@@ -580,7 +580,7 @@ export default function SmokeNet() {
           
           <div 
             id="stat-4"
-            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-[3200ms] ease-out ${
+            className={`bg-black/50 p-8 rounded-lg text-center transition-all duration-1000 ease-out ${
               isVisible('stat-4') 
                 ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                 : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
@@ -598,10 +598,10 @@ export default function SmokeNet() {
           <div 
             id="final-quote"
             data-animate
-            className={`transition-all duration-[3500ms] ease-out delay-[1050ms] ${
+            className={`transition-all duration-1000 ease-out ${
               isVisible('final-quote') 
                 ? 'opacity-100 translate-y-0 scale-100 blur-0' 
-                : 'opacity-0 translate-y-[80px] scale-90 blur-md'
+                : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
             }`}
           >
             <blockquote className="text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed mb-12 text-gray-100">

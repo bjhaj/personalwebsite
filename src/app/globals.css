@@ -363,4 +363,85 @@
       letter-spacing: 0.12em;
     }
   }
+
+  /* Carousel Animation */
+  @keyframes carousel {
+    0% {
+      transform: translateY(0);
+    }
+    14.28% {
+      transform: translateY(-400px);
+    }
+    28.56% {
+      transform: translateY(-800px);
+    }
+    42.84% {
+      transform: translateY(-1200px);
+    }
+    57.12% {
+      transform: translateY(-1600px);
+    }
+    71.4% {
+      transform: translateY(-2000px);
+    }
+    85.68% {
+      transform: translateY(-2400px);
+    }
+    100% {
+      transform: translateY(-2800px);
+    }
+  }
+
+  .animate-carousel {
+    animation: carousel 24s linear infinite;
+  }
+
+  .carousel-container {
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    will-change: transform;
+  }
+
+  .carousel-panel {
+    flex-shrink: 0;
+  }
+
+  /* 3D Transform Utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .rotate-x-2 {
+    transform: rotateX(2deg);
+  }
+
+  .hover\:rotate-x-0:hover {
+    transform: rotateX(0deg);
+  }
+
+  /* Enhanced 3D Effects */
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+  }
+
+  /* Constellation Effect */
+  .constellation-container {
+    position: relative;
+  }
+
+  .constellation-icon {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  .constellation-icon:hover {
+    z-index: 10;
+  }
+
+  .constellation-text {
+    z-index: 20;
+    min-width: 200px;
+  }
 }
