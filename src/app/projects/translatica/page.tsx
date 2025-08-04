@@ -43,6 +43,11 @@ export default function Translatica() {
               setTimeout(() => setVisibleElements(prev => new Set([...prev, 'architecture-grid'])), 500)
             }
             
+            // Trigger sequential animations for achievements section
+            if (id === 'achievements-title') {
+              setTimeout(() => setVisibleElements(prev => new Set([...prev, 'outcomes-content'])), 400)
+            }
+            
             // Trigger sequential animations for outcomes section - animate from the web container
             if (id === 'outcomes-content') {
               setTimeout(() => setVisibleElements(prev => new Set([...prev, 'outcome-1'])), 300)
@@ -213,7 +218,7 @@ export default function Translatica() {
       </section>
 
       {/* Pipeline */}
-      <section className="bg-gray-950 px-6 pt-32 pb-12">
+      <section className="bg-gray-950 px-6 pt-32 pb-32">
         <div className="max-w-7xl w-full mx-auto">
           
           {/* Pipeline Title Section */}
@@ -363,9 +368,9 @@ export default function Translatica() {
       </section>
 
       {/* System Architecture */}
-      <section className="min-h-screen bg-gray-950 px-6 py-20">
+      <section className="bg-gray-950 px-6 py-20 pb-8">
         <div className="max-w-7xl w-full mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-8">
             
             {/* Left Half - Title */}
             <div>
@@ -455,13 +460,38 @@ export default function Translatica() {
       </section>
 
       {/* Outcomes Constellation */}
-      <section className="min-h-screen bg-gray-950 flex items-center justify-center px-6 py-4 overflow-hidden">
-        <div className="max-w-5xl w-full">
+      <section className="bg-gray-950 flex items-center justify-center px-6 pt-32 py-8">
+        <div className="max-w-7xl w-full">
+          
+          {/* Key Achievements Title */}
+          <div className="w-full mx-auto mb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              
+              {/* Left Half - Title */}
+              <div>
+                <h2 
+                  id="achievements-title"
+                  data-animate
+                  className={`text-4xl md:text-5xl lg:text-6xl font-light text-white transition-all duration-700 ease-out whitespace-nowrap ${
+                    isVisible('achievements-title') 
+                      ? 'opacity-100 translate-x-0 scale-100 blur-0' 
+                      : 'opacity-0 translate-x-[-40px] scale-95 blur-sm'
+                  }`}
+                >
+                  Key Achievements
+                </h2>
+              </div>
+              
+              {/* Right Half - Empty for balance */}
+              <div></div>
+              
+            </div>
+          </div>
           
           <div 
             id="outcomes-content"
             data-animate
-            className={`relative h-[600px] -mt-48 transition-all duration-500 ease-out ${
+            className={`relative h-[800px] -mt-8 transition-all duration-500 ease-out ${
               isVisible('outcomes-content') 
                 ? 'opacity-100 translate-y-0 blur-0' 
                 : 'opacity-0 translate-y-[40px] blur-sm'
