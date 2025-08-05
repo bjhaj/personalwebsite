@@ -14,12 +14,6 @@ export default function Navigation() {
         <div className="flex justify-center">
           <div className="flex space-x-8 md:space-x-12">
             <Link 
-              href="/" 
-              className={`nav-link font-medium text-sm md:text-base ${isActive('/') ? 'active' : ''}`}
-            >
-              Home
-            </Link>
-            <Link 
               href="/projects" 
               className={`nav-link font-medium text-sm md:text-base ${isActive('/projects') ? 'active' : ''}`}
             >

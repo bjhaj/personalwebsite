@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 export default function Projects() {
-  const [visibleProjects, setVisibleProjects] = useState(new Set())
   const [isMobile, setIsMobile] = useState(false)
 
   const projects = [
@@ -52,84 +51,115 @@ export default function Projects() {
     checkMobile()
     window.addEventListener('resize', checkMobile)
 
-    // Set up Intersection Observer for scroll-triggered animations
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Add project to visible set when it enters viewport
-            setVisibleProjects(prev => new Set([...prev, entry.target.id]))
-          }
-        })
-      },
-      { 
-        threshold: 0.2, // Trigger when 20% of element is visible
-        rootMargin: '0px 0px -10% 0px' // Trigger when element is in top 90% of viewport
-      }
-    )
-
-    // Observe all project elements after a small delay to ensure DOM is ready
-    setTimeout(() => {
-      const projectElements = document.querySelectorAll('[data-project]')
-      projectElements.forEach(el => observer.observe(el))
-    }, 100)
-
     return () => {
       window.removeEventListener('resize', checkMobile)
-      observer.disconnect()
     }
   }, [])
 
-  const isProjectVisible = (index: number) => visibleProjects.has(`project-${index}`)
-
   return (
-    <div className="min-h-screen bg-gray-950 py-12 px-6">
-      <div className="max-w-7xl mx-auto h-full">
-        {/* Desktop: 2x2 grid, Mobile: Single column with scroll animations */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:h-full md:max-h-[80vh]">
-          {projects.map((project, index) => (
-            <Link 
-              key={index}
-              id={`project-${index}`}
-              data-project
-              href={project.link}
-              className={`group bg-gray-900 border border-gray-800 rounded-lg overflow-hidden hover:border-indigo-500 transition-all duration-700 flex flex-col ${
-                // Desktop: always visible, Mobile: fade in on scroll
-                isMobile
-                  ? (isProjectVisible(index) 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-10')
-                  : 'opacity-100 translate-y-0'
-              }`}
-            >
-              <div className="aspect-video relative flex-shrink-0">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <div className="mb-3">
-                  <h3 className="text-xl font-semibold text-gray-50 group-hover:text-indigo-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm">
-                    {project.subtitle}
+    <>
+      {/* Structured Data for Projects Page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Projects by Baaz Jhaj",
+            "description": "AI Engineer & Systems Builder projects including wildfire detection, translation platforms, and AI alignment research",
+            "url": "https://baazjhaj.com/projects",
+            "author": {
+              "@type": "Person",
+              "name": "Baaz Jhaj"
+            },
+            "hasPart": [
+              {
+                "@type": "CreativeWork",
+                "name": "SmokeNet",
+                "description": "Edge AI system for real-time wildfire detection using knowledge distillation and LoRa networks",
+                "url": "https://baazjhaj.com/projects/smokenet",
+                "creator": {
+                  "@type": "Person",
+                  "name": "Baaz Jhaj"
+                }
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Translatica",
+                "description": "AI-powered translation system bridging language barriers with advanced natural language processing",
+                "url": "https://baazjhaj.com/projects/translatica",
+                "creator": {
+                  "@type": "Person",
+                  "name": "Baaz Jhaj"
+                }
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "SelfAlign",
+                "description": "Research framework for self-aligning AI systems with human values and preferences",
+                "url": "https://baazjhaj.com/projects/selfalign",
+                "creator": {
+                  "@type": "Person",
+                  "name": "Baaz Jhaj"
+                }
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "DistillKit",
+                "description": "Comprehensive PyTorch toolkit for model compression and edge deployment optimization",
+                "url": "https://baazjhaj.com/projects/distillkit",
+                "creator": {
+                  "@type": "Person",
+                  "name": "Baaz Jhaj"
+                }
+              }
+            ]
+          })
+        }}
+      />
+      
+      <div className="bg-gray-950 min-h-screen md:h-screen flex flex-col md:justify-center p-2 py-4 md:py-2">
+        <div className="max-w-4xl mx-auto w-full">
+          {/* Desktop: 2x2 Grid, Mobile: 4x1 Column */}
+          <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-6 md:gap-10 h-auto md:h-[80vh]">
+            {projects.map((project, index) => (
+              <Link 
+                key={index}
+                id={`project-${index}`}
+                data-project
+                href={project.link}
+                className="group bg-gray-900 border border-gray-800 rounded overflow-hidden hover:border-indigo-500 transition-all duration-300 flex flex-col h-[75vh] md:h-full md:max-h-[40vh] opacity-100 translate-y-0"
+                aria-label={`View ${project.title} project - ${project.subtitle}`}
+              >
+                <div className="h-1/2 relative flex-shrink-0">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} - ${project.subtitle}`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-3 flex-1 flex flex-col min-h-0">
+                  <div className="mb-2">
+                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-50 group-hover:text-indigo-400 transition-colors line-clamp-1">
+                      {project.title}
+                    </h2>
+                    <p className="text-gray-400 text-sm line-clamp-1">
+                      {project.subtitle}
+                    </p>
+                  </div>
+                  <p className="text-gray-300 text-sm leading-normal flex-1 line-clamp-3 mb-0 md:mb-2">
+                    {project.description}
+                  </p>
+                  <p className="text-sm text-gray-500 line-clamp-2">
+                    {project.tags}
                   </p>
                 </div>
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed flex-1">
-                  {project.description}
-                </p>
-                <p className="text-sm text-gray-500">
-                  {project.tags}
-                </p>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
