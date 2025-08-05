@@ -9,8 +9,27 @@ export default function Home() {
   const [isTransitioning, setIsTransitioning] = useState(false)
 
   useEffect(() => {
-    const handleMouseMove = () => {
-      if (!hasInteracted) {
+    let startX: number | null = null
+    let startY: number | null = null
+    const requiredDistance = 200 // approximately 1 inch at 96 DPI
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (hasInteracted) return
+
+      // Set initial position on first mouse move
+      if (startX === null || startY === null) {
+        startX = e.clientX
+        startY = e.clientY
+        return
+      }
+
+      // Calculate distance moved
+      const deltaX = e.clientX - startX
+      const deltaY = e.clientY - startY
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+
+      // Only trigger if moved required distance
+      if (distance >= requiredDistance) {
         setHasInteracted(true)
         setIsTransitioning(true)
         
@@ -24,7 +43,7 @@ export default function Home() {
     // Add mouse move listener
     document.addEventListener('mousemove', handleMouseMove)
     
-    // Also trigger on scroll or touch
+    // Also trigger on scroll or touch (immediate for mobile)
     const handleInteraction = () => {
       if (!hasInteracted) {
         setHasInteracted(true)
