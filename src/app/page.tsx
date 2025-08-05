@@ -94,7 +94,18 @@ export default function Home() {
       
       <div className="h-screen bg-black overflow-hidden">
         {/* Hero Section */}
-        <section className="h-screen flex items-center justify-center px-6 relative overflow-hidden">
+        <section 
+          className="h-screen flex items-center justify-center px-6 relative overflow-hidden cursor-pointer"
+          onClick={() => {
+            if (!hasInteracted) {
+              setHasInteracted(true)
+              setIsTransitioning(true)
+              setTimeout(() => {
+                window.location.href = '/projects'
+              }, 800)
+            }
+          }}
+        >
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/hero-background.jpg"
