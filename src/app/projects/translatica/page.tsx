@@ -117,19 +117,18 @@ export default function Translatica() {
         </div>
       </section>
 
-      {/* Why Translatica Section */}
-      <section className="bg-black px-6 pt-12 pb-0">
-        <div className="max-w-7xl w-full mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            
-            {/* Left Half - Title */}
+      {/* Why Translatica? */}
+      <section className="py-12 bg-black">
+        <div className="max-w-8xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left Column - Title */}
             <div 
               id="why-title"
               data-animate
-              className={`transition-all duration-700 ease-out ${
+              className={`transition-all duration-1000 ease-out ${
                 isVisible('why-title') 
-                  ? 'opacity-100 translate-x-0 scale-100 blur-0' 
-                  : 'opacity-0 translate-x-[-40px] scale-95 blur-sm'
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-10'
               }`}
             >
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
@@ -137,89 +136,56 @@ export default function Translatica() {
               </h2>
             </div>
 
-            {/* Right Half - Content */}
+            {/* Right Column - Content */}
             <div 
               id="why-content"
               data-animate
-              className={`transition-all duration-700 ease-out ${
+              className={`transition-all duration-1000 ease-out delay-300 ${
                 isVisible('why-content') 
-                  ? 'opacity-100 translate-x-0 blur-0' 
-                  : 'opacity-0 translate-x-[40px] blur-sm'
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-10'
               }`}
             >
-              <div className="flex justify-end">
-                <div className="max-w-2xl">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-right">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
-                    {/* First Column */}
-                    <div className="space-y-3 text-sm md:text-base leading-tight text-gray-300">
-                      <div className="space-y-2">
-                        <p className="text-white font-medium">Language is more than words.</p>
-                        <p>It's memory. Emotion. Identity.</p>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <p>But most translation tools reduce it to data.</p>
-                        <p>They lose the speaker behind the sentence.</p>
-                        <p>Tone becomes flat. Emotion fades.</p>
-                        <p>Presence disappears.</p>
-                      </div>
-
-                      <div className="space-y-2">
-                        <p className="text-red-300">In education, students hear machines—not mentors.</p>
-                        <p className="text-red-300">In conversation, warmth turns cold.</p>
-                        <p className="text-red-300">In media, personality vanishes into monotone.</p>
-                      </div>
-
-                      <div className="space-y-2">
-                        <p>The problem isn't just what is translated.</p>
-                        <p className="text-white font-medium">It's how.</p>
-                      </div>
+                  <div className="space-y-5">
+                    <div>
+                      <h3 className="text-lg font-medium mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Language is Human Connection</h3>
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        Language is one of the most powerful expressions of our humanity. It allows us to share not only information, but our inner lives: memories, emotions, humor, culture, and identity. Through language, we pass down history, express love and grief, resolve conflict, and create shared meaning.
+                      </p>
                     </div>
-
-                    {/* Second Column */}
-                    <div className="space-y-3 text-sm md:text-base leading-tight text-gray-300">
-                      <div className="space-y-2">
-                        <p>Because language carries meaning—</p>
-                        <p className="text-blue-300 font-medium">but voice carries connection.</p>
-                        <p>How we speak is as human as what we say.</p>
-                      </div>
-
-                      <div className="space-y-2">
-                        <p className="text-white font-medium">Translatica was built to preserve both.</p>
-                      </div>
-
-                      <div className="space-y-2">
-                        <p>Not just to translate words,</p>
-                        <p className="text-indigo-300 font-medium">but to speak them as you would.</p>
-                      </div>
-
-                      <div className="space-y-2">
-                        <p className="text-white font-medium">That's why it's modular.</p>
-                      </div>
-
-                      <div className="space-y-2">
-                        <p>End-to-end systems are black boxes—</p>
-                        <p>opaque, rigid, and impossible to trust.</p>
-                        <p className="text-green-300">Modularity enables clarity.</p>
-                        <p>It lets us listen, test, and evolve.</p>
-                      </div>
-
-                      <div className="space-y-2">
-                        <p className="text-white font-medium">Translatica is transparent by design.</p>
-                        <p>Each step intentional. Each part adjustable.</p>
-                      </div>
-
-                      <div className="space-y-2">
-                        <p className="text-purple-300 font-medium text-base">A pipeline built to preserve presence.</p>
-                      </div>
+                    <div>
+                      <h3 className="text-lg font-medium mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">The Language Barrier</h3>
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        Yet language can also be a boundary. When we cannot understand the words someone speaks, connection becomes harder to establish. Miscommunication, or silence, can make others feel foreign, distant, even threatening. This is not merely a social inconvenience; it has real consequences.
+                      </p>
                     </div>
-
+                    <div>
+                      <h3 className="text-lg font-medium mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">The Human Cost</h3>
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        Historically, the absence of a shared language has often enabled dehumanization. Psychological research and
+military accounts suggest that soldiers are more likely to dehumanize enemies who speak an unfamiliar language or none at all. The linguistic gap creates distance, and that distance can dull empathy.
+                      </p>
+                    </div>
                   </div>
-                </div>
+                  <div className="space-y-5">
+                    <div>
+                      <h3 className="text-lg font-medium mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Building Trust Through Voice</h3>
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        When someone speaks our language, or even tries to, we instinctively view them as more relatable and trustworthy. Language doesn't just carry words; it conveys identity, tone, and emotion. And when spoken in a familiar voice, it bridges not only linguistic divides but emotional ones as well.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Beyond Simple Translation</h3>
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        These insights form the foundation of the Translatica project. In an increasingly global world, the ability to communicate fluidly across languages, without losing the personality or presence of the speaker, has become deeply valuable. Real connection demands more than just translated words; it requires rhythm, tone, and voice.
+                      </p>
+                    </div>
+                  </div>
+
               </div>
             </div>
-            
           </div>
         </div>
       </section>
@@ -927,7 +893,7 @@ export default function Translatica() {
                     </div>
                   </div>
                 </div>
-              </div>
+                            </div>
             </div>
           </div>
         </div>

@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     siteName: 'Baaz Jhaj Studios',
     images: [
       {
-        url: '/images/profile.png',
-        width: 1200,
-        height: 630,
+        url: '/images/profile.jpg',
+        width: 2400,
+        height: 1260,
         alt: 'Baaz Jhaj - AI Engineer & Systems Builder',
       },
     ],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About Baaz Jhaj - AI Engineer & Systems Builder',
     description: 'Learn about Baaz Jhaj, an AI Engineer & Systems Builder specializing in edge AI, model compression, and real-world deployment of machine learning systems.',
-    images: ['/images/profile.png'],
+    images: ['/images/profile.jpg'],
   },
   alternates: {
     canonical: 'https://baazjhaj.com/about',
@@ -66,7 +66,7 @@ export default function About() {
             "jobTitle": "AI Engineer & Systems Builder",
             "description": "AI Engineer specializing in edge AI, model compression, and real-world deployment of machine learning systems",
             "url": "https://baazjhaj.com",
-            "image": "https://baazjhaj.com/images/profile.png",
+            "image": "https://baazjhaj.com/images/profile.jpg",
             "sameAs": [
               "https://github.com/bjhaj",
               "https://www.linkedin.com/in/baaz-jhaj/"
@@ -106,115 +106,81 @@ export default function About() {
       
       <div className="min-h-screen bg-gray-950 py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Profile Section */}
-            <div className="lg:col-span-2 space-y-8">
-              <div className="flex flex-col md:flex-row gap-8 items-start">
-                <div className="flex-shrink-0">
-                  <Image
-                    src="/images/profile.png"
-                    alt="Baaz Jhaj - AI Engineer & Systems Builder"
-                    width={200}
-                    height={200}
-                    className="rounded-lg"
-                  />
-                </div>
-                <div className="space-y-6">
-                  <div>
-                    <h1 className="text-3xl font-bold text-gray-50 mb-4">
-                      Building AI that works in the real world
-                    </h1>
-                    <p className="text-lg text-gray-300 leading-relaxed">
-                      I design intelligent systems that push the edge of what's possible. My focus is on edge AI, model 
-                      optimization, and systems that can operate reliably in resource-constrained 
-                      real-world scenarios. I'm also deeply interested in developing systems with 
-                      positive social impact that genuinely improve people's lives.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h2 className="text-xl font-semibold text-gray-50 mb-3">
-                      What I Do
-                    </h2>
-                    <ul className="space-y-2 text-gray-300">
-                      <li>• Design and deploy edge AI systems for remote environments</li>
-                      <li>• Develop model compression techniques (distillation, quantization)</li>
-                      <li>• Build ML frameworks and toolkits for practical deployment</li>
-                      <li>• Create AI systems for social impact (wildfire detection, translation)</li>
-                      <li>• Develop AI solutions for businesses and people who can't afford enterprise solutions</li>
-                    </ul>
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            {/* Left Column - Profile Image & Links */}
+            <div className="flex flex-col">
+              <div className="self-start">
+                <Image
+                  src="/images/profile.jpg"
+                  alt="Baaz Jhaj - AI Engineer & Systems Builder"
+                  width={400}
+                  height={400}
+                  className="rounded-lg mb-6"
+                  quality={95}
+                />
+              </div>
+              <div className="space-y-3">
+                <a 
+                  href="mailto:baazjhaj@gmail.com" 
+                  className="block text-gray-50 hover:text-gray-300 transition-colors"
+                  aria-label="Email Baaz Jhaj"
+                >
+                  Email
+                </a>
+                <a 
+                  href="https://github.com/bjhaj" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-gray-50 hover:text-gray-300 transition-colors"
+                  aria-label="Baaz Jhaj's GitHub profile"
+                >
+                  GitHub
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/baaz-jhaj/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-gray-50 hover:text-gray-300 transition-colors"
+                  aria-label="Baaz Jhaj's LinkedIn profile"
+                >
+                  LinkedIn
+                </a>
+                <Link 
+                  href="/Baaz-Jhaj-Resume.pdf"
+                  target="_blank"
+                  className="block text-gray-50 hover:text-gray-300 transition-colors"
+                  aria-label="Download Baaz Jhaj's resume"
+                >
+                  Resume (PDF)
+                </Link>
               </div>
             </div>
 
-            {/* Resume Sidebar */}
-            <div className="space-y-8">
-              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-                <h2 className="text-xl font-semibold text-gray-50 mb-4">
-                  Technical Expertise
-                </h2>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="font-medium text-gray-50 mb-2">Machine Learning</h3>
-                    <p className="text-sm text-gray-300">
-                      PyTorch, Knowledge Distillation, Model Quantization, Edge AI, Transformers
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-50 mb-2">Systems & Hardware</h3>
-                    <p className="text-sm text-gray-300">
-                      Raspberry Pi, LoRa Networks, Solar Power, Embedded Systems, Docker
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-50 mb-2">Development</h3>
-                    <p className="text-sm text-gray-300">
-                      Python, TypeScript, Next.js, Git, Linux, Cloud Deployment
-                    </p>
-                  </div>
-                </div>
+            {/* Second Column - Empty */}
+            <div></div>
+
+            {/* Third & Fourth Columns - Content */}
+            <div className="lg:col-span-2 space-y-8 mt-16">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-50 mb-4">
+                  Baaz Jhaj
+                </h1>
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  I design intelligent systems that push the edge of what's possible. My focus is on edge AI, model 
+                  optimization, and systems that can operate reliably in resource-constrained 
+                  real-world scenarios. I aim to improve lives with my work.
+                </p>
               </div>
 
-              <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-                <h2 className="text-xl font-semibold text-gray-50 mb-4">
-                  Connect
+              <div>
+                <h2 className="text-xl font-semibold text-gray-50 mb-3">
+                  What I Do
                 </h2>
-                <div className="space-y-3">
-                  <a 
-                    href="mailto:baazjhaj@gmail.com" 
-                    className="block text-indigo-500 hover:text-indigo-400 transition-colors"
-                    aria-label="Email Baaz Jhaj"
-                  >
-                    Email
-                  </a>
-                  <a 
-                    href="https://github.com/bjhaj" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-indigo-500 hover:text-indigo-400 transition-colors"
-                    aria-label="Baaz Jhaj's GitHub profile"
-                  >
-                    GitHub
-                  </a>
-                  <a 
-                    href="https://www.linkedin.com/in/baaz-jhaj/" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-indigo-500 hover:text-indigo-400 transition-colors"
-                    aria-label="Baaz Jhaj's LinkedIn profile"
-                  >
-                    LinkedIn
-                  </a>
-                  <Link 
-                    href="/Baaz-Jhaj-Resume.pdf"
-                    target="_blank"
-                    className="block text-indigo-500 hover:text-indigo-400 transition-colors"
-                    aria-label="Download Baaz Jhaj's resume"
-                  >
-                    Resume (PDF)
-                  </Link>
-                </div>
+                <ul className="space-y-2 text-gray-300">
+                  <li>• Design and deploy edge AI systems for remote environments</li>
+                  <li>• Create AI systems for social impact</li>
+                  <li>• Develop AI solutions for businesses and people who can't afford enterprise solutions</li>
+                </ul>
               </div>
             </div>
           </div>

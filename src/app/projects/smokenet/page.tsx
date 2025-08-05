@@ -196,19 +196,19 @@ export default function SmokeNet() {
                     <div>
                       <h3 className="text-lg font-medium text-orange-400 mb-3">The Problem is Growing</h3>
                       <p className="text-sm text-gray-300 leading-relaxed">
-                        Wildfires are becoming more frequent, intense, and destructive. In 2023 alone, over 2.6 million acres burned in the U.S., causing billions in damages and displacing thousands. Globally, wildfires release more carbon dioxide than all annual traffic emissions combined—fueling climate change and creating a dangerous feedback loop. Yet traditional detection methods, like satellites, often spot fires hours after ignition, when it's already too late.
+                        Wildfires are becoming more frequent, intense, and destructive. In 2023 alone, over 2.6 million acres burned in the U.S., causing billions in damages and displacing thousands. Globally, wildfires release more carbon dioxide than all annual traffic emissions combined: fueling climate change and creating a dangerous feedback loop. Yet traditional detection methods, like satellites, often spot fires hours after ignition, when it's already too late.
                       </p>
                     </div>
                     <div>
                       <h3 className="text-lg font-medium text-orange-400 mb-3">Real-Time Early Detection</h3>
                       <p className="text-sm text-gray-300 leading-relaxed">
-                        Every minute matters. The sooner a fire is detected, the more likely it can be contained. SmokeNet detects smoke in its earliest visible stages—often before satellites register thermal signatures—giving responders a critical head start.
+                        Every minute matters. The sooner a fire is detected, the more likely it can be contained. SmokeNet detects smoke in its earliest visible stages, giving responders a critical head start.
                       </p>
                     </div>
                     <div>
                       <h3 className="text-lg font-medium text-orange-400 mb-3">Built for Real-World Deployment</h3>
                       <p className="text-sm text-gray-300 leading-relaxed">
-                        Built for real-world deployment, SmokeNet runs without internet, without grid power, and without ideal conditions. Its lightweight, distilled machine learning model operates directly on-device, making fast and reliable decisions in remote, high-risk environments where surveillance is otherwise impossible.
+                        Built for real-world deployment, SmokeNet runs without internet, without grid power, and without ideal conditions. Its lightweight, distilled, quantized, and optimized machine learning model operates directly on-device, making fast and reliable decisions in remote, high-risk environments where surveillance is otherwise impossible.
                       </p>
                     </div>
                   </div>
@@ -222,7 +222,7 @@ export default function SmokeNet() {
                     <div>
                       <h3 className="text-lg font-medium text-orange-400 mb-3">Immediate, Intelligent Alerts</h3>
                       <p className="text-sm text-gray-300 leading-relaxed">
-                        Once smoke is detected, SmokeNet sends an alert within seconds, using low-power, long-range LoRa radios to relay messages across disconnected terrain—reaching emergency responders without needing cellular or satellite connectivity.
+                        Once smoke is detected, SmokeNet sends an alert within seconds, using low-power, long-range LoRa radios to relay messages across disconnected terrain, reaching emergency responders without needing cellular or satellite connectivity.
                       </p>
                     </div>
                   </div>
