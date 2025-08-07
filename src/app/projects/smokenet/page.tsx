@@ -162,24 +162,24 @@ export default function SmokeNet() {
           </div>
         </section>
 
-        {/* Why SmokeNet? */}
-        <section className="py-12 bg-black">
-          <div className="max-w-8xl mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              {/* Left Column - Title */}
-              <div 
-                id="why-smokenet-title"
-                data-animate
-                className={`transition-all duration-1000 ease-out ${
-                  isVisible('why-smokenet-title') 
-                    ? 'opacity-100 translate-y-0' 
-                    : 'opacity-0 translate-y-10'
-                }`}
-              >
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
-                  Why SmokeNet?
-                </h2>
-              </div>
+              {/* Why SmokeNet? */}
+      <section className="bg-black px-6 pt-32 pb-32">
+        <div className="max-w-7xl w-full mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left Column - Title */}
+            <div 
+              id="why-smokenet-title"
+              data-animate
+              className={`transition-all duration-1000 ease-out ${
+                isVisible('why-smokenet-title') 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-10'
+              }`}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
+                Why SmokeNet?
+              </h2>
+            </div>
 
               {/* Right Column - Content */}
               <div 
@@ -232,22 +232,26 @@ export default function SmokeNet() {
           </div>
         </section>
 
-        {/* Introducing SmokeNet */}
-        <section className="min-h-screen bg-black flex items-center justify-center px-6 pt-2 pb-10">
-          <div className="max-w-8xl mx-auto px-4 w-full">
-            <div className="mb-20">
+              {/* Introducing SmokeNet */}
+      <section className="bg-black px-6 pt-32 pb-32">
+        <div className="max-w-7xl w-full mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-16">
+            {/* Left Column - Title */}
+            <div>
               <h2 
                 id="intro-title"
                 data-animate
-                className={`text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white transition-all duration-1000 ease-out ${
+                className={`text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight transition-all duration-1000 ease-out whitespace-nowrap ${
                   isVisible('intro-title') 
                     ? 'opacity-100 translate-y-0 scale-100 blur-0' 
                     : 'opacity-0 translate-y-[60px] scale-95 blur-sm'
                 }`}
-              >
-                Model Transformation Pipeline
-              </h2>
+              >Model Transformation Pipeline</h2>
             </div>
+            
+            {/* Right Half - Empty for balance */}
+            <div></div>
+          </div>
             
             {/* Continuous Flow Container */}
             <div className="relative">

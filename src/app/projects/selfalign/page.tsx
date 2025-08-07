@@ -221,9 +221,9 @@ export default function SelfAlign() {
       </section>
 
       {/* Why SelfAlign? */}
-      <section className="py-12 bg-black">
-        <div className="max-w-8xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <section className="bg-black px-6 pt-32 pb-32">
+        <div className="max-w-7xl w-full mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Left Column - Title */}
             <div 
               id="why-selfalign-title"
@@ -234,7 +234,7 @@ export default function SelfAlign() {
                   : 'opacity-0 translate-y-10'
               }`}
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight whitespace-nowrap">
                 Why SelfAlign?
               </h2>
             </div>
@@ -252,35 +252,39 @@ export default function SelfAlign() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-5">
                   <div>
-                    <h3 className="text-lg font-medium text-blue-400 mb-3">The Alignment Problem Is Urgent</h3>
+                    <h3 className="text-lg font-medium text-blue-400 mb-3">Shaping Minds Without Consent</h3>
                     <p className="text-sm text-gray-300 leading-relaxed">
-                      As large language models grow more powerful, so does the risk of misalignment—where an AI's behavior subtly or dramatically deviates from human intent. Current alignment methods rely heavily on human feedback, require extensive manual tuning, and often reflect the values of whoever trained the model, rather than those of the user. This makes it hard to trust these systems, especially in high-stakes or cross-cultural settings.
+                      The most dangerous AI is not the one that makes mistakes. It's the one that tells the truth selectively.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-blue-400 mb-3">SelfAlign explores a different path.</h3>
                     <p className="text-sm text-gray-300 leading-relaxed">
-                      Instead of hand-crafting alignment through static rules or curated labels, SelfAlign aims to build AI systems that can learn, monitor, and adjust their own alignment behavior over time.
+                      Large language models aren't neutral. They are the product of countless invisible choices: what to include, what to leave out, and how to frame the world you see. These choices are made by the people and institutions who train them, often behind closed doors. Hidden biases, ideological slants, and curated "safe" narratives can be woven into the fabric of a model's knowledge. You won't always notice, but over time, these quiet nudges shape how you think.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-blue-400 mb-3">Custom Alignment, Minimal Oversight</h3>
                     <p className="text-sm text-gray-300 leading-relaxed">
-                      SelfAlign is built to give users control—letting them define a model's persona, values, and behavioral constraints, and then train models to follow those instructions through synthetic supervised fine-tuning (SFT) and self-RLHF. It reduces dependence on expensive human feedback loops by generating, filtering, and optimizing its own alignment data.
+                      This is intentional misalignment: when a system is tuned not to serve your understanding, but to serve someone else's agenda.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-blue-400 mb-3">Breaking the Spell</h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      We believe that alignment shouldn't be something done to you, it should be something you control. SelfAlign is an open framework for reclaiming AI's value system, exposing what's been buried, and giving individuals the power to decide how their models think, speak, and prioritize truth.
                     </p>
                   </div>
                 </div>
                 <div className="space-y-5">
                   <div>
-                    <h3 className="text-lg font-medium text-blue-400 mb-3">Lightweight, Adaptable, Auditable</h3>
+                    <h3 className="text-lg font-medium text-blue-400 mb-3">User-Defined Alignment Tools</h3>
                     <p className="text-sm text-gray-300 leading-relaxed">
-                      By using LoRA/QLoRA adapters, SelfAlign makes it easy to steer alignment in a modular, parameter-efficient way. These adapters can be plugged into existing LLMs to reflect different user values or application needs. And with built-in tools for tracking alignment drift, value generalization, and ethical compliance, the system remains transparent and accountable during training and deployment.
+                      SelfAlign combines modular LoRA and QLoRA adapters, synthetic supervised fine-tuning, and self-RLHF to give you full control over how your model behaves. LoRA and QLoRA adapters make alignment modular and lightweight, allowing you to change a model's persona or ideological stance without retraining the entire system. Synthetic supervised fine-tuning lets you train on high-quality, instruction-following datasets generated and filtered by the system itself, reducing dependence on expensive and opaque human feedback pipelines. Self-RLHF allows the model to iteratively refine its own behavior through preference optimization, guided by your chosen values rather than a centralized authority. Together, these techniques make it possible to define, train, and adjust a model's persona, values, and constraints entirely on your terms.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-blue-400 mb-3">Toward Safer, More Responsible AI</h3>
+                    <h3 className="text-lg font-medium text-blue-400 mb-3">Our Mission</h3>
                     <p className="text-sm text-gray-300 leading-relaxed">
-                      SelfAlign provides a research framework to test alignment strategies under real constraints: How do we align models at scale, without supervision? How can we ensure alignment holds under stress, ambiguity, or cultural variation? What mechanisms help AI systems notice and correct their own misalignment? These are the questions SelfAlign was built to explore. Because safe AI shouldn't just follow instructions—it should understand why they matter.
+                      Our mission is to reveal what has been hidden, return the power of alignment to the individual, and make AI a mirror you control rather than a lens someone else polishes. AI should not just be smart. It should be honest. And honesty begins with you deciding what it means.
                     </p>
                   </div>
                 </div>
@@ -291,17 +295,22 @@ export default function SelfAlign() {
       </section>
 
       {/* Self-Alignment Training Loop */}
-      <section className="py-20 bg-black" id="training-loop-section" data-animate>
-        <div className="max-w-8xl mx-auto px-4">
-          {/* Section Title */}
-          <div className="text-left mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6">
-              Self-Alignment Training Loop
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl">
-              A continuous process where AI systems learn to align themselves through synthetic data generation, 
-              self-filtering, and iterative improvement.
-            </p>
+      <section className="bg-black px-6 pt-32 pb-32" id="training-loop-section" data-animate>
+        <div className="max-w-7xl w-full mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-16">
+            {/* Left Column - Title */}
+            <div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight whitespace-nowrap mb-4">
+                Self-Alignment Training Loop
+              </h2>
+              <p className="text-xl text-gray-400">
+                A continuous process where AI systems learn to align themselves through synthetic data generation, 
+                self-filtering, and iterative improvement.
+              </p>
+            </div>
+            
+            {/* Right Half - Empty for balance */}
+            <div></div>
           </div>
 
           {/* Responsive Animation Container - Horizontal on desktop, Vertical on mobile */}

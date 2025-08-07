@@ -118,9 +118,9 @@ export default function Translatica() {
       </section>
 
       {/* Why Translatica? */}
-      <section className="py-12 bg-black">
-        <div className="max-w-8xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <section className="bg-black px-6 pt-32 pb-32">
+        <div className="max-w-7xl w-full mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Left Column - Title */}
             <div 
               id="why-title"
