@@ -11,7 +11,7 @@ export default function Projects() {
     {
       title: "SmokeNet",
       subtitle: "Wildfire Detection System",
-      description: "Edge AI system for real-time wildfire detection using knowledge distillation and LoRa networks.",
+      description: "Edge AI system for early wildfire smoke detection in remote, off-grid environments.",
       tags: "Edge AI • LoRa • PyTorch • Knowledge Distillation",
       image: "/images/smokenet-banner.webp",
       link: "/projects/smokenet"
@@ -19,15 +19,15 @@ export default function Projects() {
     {
       title: "Translatica",
       subtitle: "Translation Platform",
-      description: "AI-powered translation system bridging language barriers with advanced natural language processing.",
-      tags: "NLP • Translation • AI • Platform",
+      description: "Speech-to-speech translation platform that preserves a speaker's voice, tone, and presence across languages.",
+      tags: "NLP • Translation • Speech Synthesis • AI • Platform",
       image: "/images/translatica-banner.webp",
       link: "/projects/translatica"
     },
     {
       title: "SelfAlign",
       subtitle: "AI Alignment Research",
-      description: "Research framework for self-aligning AI systems with human values and preferences.",
+      description: "Transparent, customizable framework that gives individuals control over how AI thinks, speaks, and prioritizes truth.",
       tags: "AI Alignment • Research • ML Safety • Ethics",
       image: "/images/selfalign-banner.webp",
       link: "/projects/selfalign"
@@ -35,8 +35,8 @@ export default function Projects() {
     {
       title: "DistillKit",
       subtitle: "PyTorch toolkit for model optimization",
-      description: "Seamless knowledge distillation and quantization.",
-      tags: "Library/Toolkit • Edge AI • Knowledge Distillation • Quantization",
+      description: "Lightweight toolkit for compressing AI models to run efficiently on resource-constrained devices.",
+      tags: "Library/Toolkit • Edge AI • Distillation • Quantization",
       image: "/images/distillkit-banner.jpg",
       link: "/projects/distillkit"
     }
