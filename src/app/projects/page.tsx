@@ -35,7 +35,7 @@ export default function Projects() {
     {
       title: "DistillKit",
       subtitle: "PyTorch toolkit for model optimization",
-      description: "Comprehensive PyTorch toolkit for model compression and edge deployment optimization.",
+      description: "Seamless knowledge distillation and quantization.",
       tags: "Library/Toolkit • Edge AI • Knowledge Distillation • Quantization",
       image: "/images/distillkit-banner.jpg",
       link: "/projects/distillkit"

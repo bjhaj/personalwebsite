@@ -551,7 +551,7 @@ export default function DistillKit() {
           </h1>
           <div className={`transition-opacity duration-1000 ${showSubheading ? 'opacity-100' : 'opacity-0'}`}>
             <p className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-300 tracking-wide">
-              PyTorch toolkit for model compression.
+              PyTorch toolkit for model optimization.
             </p>
           </div>
           </div>
