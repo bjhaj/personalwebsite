@@ -192,7 +192,7 @@ export default function SelfAlign() {
       <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/selfalign-banner.webp"
+            src="/images/selfalignbanner.png"
             alt="SelfAlign abstract neural network visualization"
             fill
             className="object-cover opacity-50"

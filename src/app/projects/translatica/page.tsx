@@ -89,7 +89,7 @@ export default function Translatica() {
       <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/translatica-banner.webp"
+            src="/images/translatica-banner.png"
             alt="Translatica abstract communication visualization"
             fill
             className="object-cover opacity-50"

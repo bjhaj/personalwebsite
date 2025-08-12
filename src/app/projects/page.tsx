@@ -21,7 +21,7 @@ export default function Projects() {
       subtitle: "Translation Platform",
       description: "Speech-to-speech translation platform that preserves a speaker's voice, tone, and presence across languages.",
       tags: "NLP • Translation • Speech Synthesis • AI • Platform",
-      image: "/images/translatica-banner.webp",
+      image: "/images/translatica-banner.png",
       link: "/projects/translatica"
     },
     {
@@ -29,7 +29,7 @@ export default function Projects() {
       subtitle: "AI Alignment Research",
       description: "Transparent, customizable framework that gives individuals control over how AI thinks, speaks, and prioritizes truth.",
       tags: "AI Alignment • Research • ML Safety • Ethics",
-      image: "/images/selfalign-banner.webp",
+      image: "/images/selfalignbanner.png",
       link: "/projects/selfalign"
     },
     {

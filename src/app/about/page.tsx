@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: 'Baaz Jhaj Studios',
     images: [
       {
-        url: '/images/profile.jpg',
+        url: '/images/profile.png',
         width: 2400,
         height: 1260,
         alt: 'Baaz Jhaj - AI Engineer & Systems Builder',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About Baaz Jhaj - AI Engineer & Systems Builder',
     description: 'Learn about Baaz Jhaj, an AI Engineer & Systems Builder specializing in edge AI, model compression, and real-world deployment of machine learning systems.',
-    images: ['/images/profile.jpg'],
+    images: ['/images/profile.png'],
   },
   alternates: {
     canonical: 'https://baazjhaj.com/about',
@@ -66,7 +66,7 @@ export default function About() {
             "jobTitle": "AI Engineer & Systems Builder",
             "description": "AI Engineer specializing in edge AI, model compression, and real-world deployment of machine learning systems",
             "url": "https://baazjhaj.com",
-            "image": "https://baazjhaj.com/images/profile.jpg",
+            "image": "https://baazjhaj.com/images/profile.png",
             "sameAs": [
               "https://github.com/bjhaj",
               "https://www.linkedin.com/in/baaz-jhaj/"
@@ -111,7 +111,7 @@ export default function About() {
             <div className="flex flex-col">
               <div className="self-start">
                 <Image
-                  src="/images/profile.jpg"
+                  src="/images/profile.png"
                   alt="Baaz Jhaj - AI Engineer & Systems Builder"
                   width={400}
                   height={400}
